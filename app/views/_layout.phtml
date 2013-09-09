@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title><?= $title ?> - Atomik</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link href="<?php echo $this->asset('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
+		<link href="<?php echo $this->asset('assets/css/app.css') ?>" rel="stylesheet">
+
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+			<script src="<?php echo $this->asset('assets/js/html5shiv.js') ?>"></script>
+		<![endif]-->
+
+		<?php if ($this['atomik.debug'] && Atomik::isPluginLoaded('DebugBar')) echo $this->renderDebugBarHead(); ?>
+	</head>
+	<body>
+
+		<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+			<div class="container">
+
+				<div class="navbar-header">
+					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+						<span class="sr-only">Menu</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>	
+					<a class="navbar-brand" href="<?= ROOT ?>"><span class="glyphicon glyphicon-record"></span> Atomik</a>
+				</div>
+
+				<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+					
+					<ul class="nav navbar-nav pull-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenue, <?= USER_NAME ?> <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="<?= ROOT ?>compte"><span class="glyphicon glyphicon-pencil"></span> Mon compte</a></li>
+								<li class="divider"></li>
+								<li><a href="<?= ROOT ?>deconnexion"><span class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
+							</ul>
+						</li>
+					</ul>
+
+					<ul class="nav navbar-nav">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Clients <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="<?= ROOT ?>clients">Clients</a></li>
+							</ul>
+						</li>
+					</ul>
+					
+				</nav>
+			</div>
+		</header>
+
+		<section>
+			<div class="container">
+
+				<div class="col-md-3 visible-lg">
+					<div class="sidenav" role="complementary">
+						<ul class="nav bs-sidenav">
+							<li><h4><span class="glyphicon glyphicon-earphone"></span> Gestion des clients</h4></li>
+							<li><a <?= Atomik::uriMatch('/clients*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>clients">Clients</a></li>
+
+							<li><h4><span class="glyphicon glyphicon-user"></span> Gestion de l'extranet</h4></li>
+							<li><a <?= Atomik::uriMatch('/compte*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>compte">Mon compte</a></li>
+							<?php if(USER_ADMIN) { ?><li><a <?= Atomik::uriMatch('/employes*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>employes">Employés</a></li><?php } ?>
+						</ul>
+					  </div>
+				</div>
+
+				<div class="col-md-12 col-lg-9">
+					<div class="page-header">
+						<h1><?php echo $title ?> <small><?php echo $subtitle ?></small></h1>
+					</div>
+
+					<?php if (count($this['flash_messages'])): ?>
+						<?php foreach ($this['flash_messages'] as $label => $messages): ?>
+							<?php foreach ($messages as $message): ?>
+								<div class="alert alert-dismissable alert-<?php echo $label ?>">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<?php echo $message ?>
+								</div>
+							<?php endforeach; ?>
+						<?php endforeach; ?>
+					<?php endif ?>
+				
+					<div id="content" role="main">
+						<?php echo $contentForLayout; ?>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<footer>
+			<div class="container">
+				<p>&copy; <?php echo date('Y') ?>, Atomik - <small>Conception & Réalisation : <a href="http://zes.sx" class="external">@zessx</a></small></p>
+			</div>
+		</footer>
+
+		<?php if ($this['atomik.debug'] && Atomik::isPluginLoaded('DebugBar')) echo $this->renderDebugBar(); ?>
+
+		<script src="<?php echo $this->asset('assets/js/jquery-1.9.1.min.js') ?>"></script>
+		<script src="<?php echo $this->asset('assets/js/bootstrap.min.js') ?>"></script>
+		<script src="<?php echo $this->asset('assets/js/plugins/jquery.datatables.js') ?>"></script>
+		<script src="<?php echo $this->asset('assets/js/plugins/bootstrap.datepicker.js') ?>"></script>
+		<script src="<?php echo $this->asset('assets/js/plugins/DT_bootstrap.js') ?>"></script>
+		<script src="<?php echo $this->asset('assets/js/app.js') ?>"></script>
+	</body>
+</html>

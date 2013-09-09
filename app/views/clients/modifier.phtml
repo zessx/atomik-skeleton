@@ -1,0 +1,63 @@
+<?= $form = $this->form(ROOT.'clients/modifier/'.$client['id_client'], null, array('class' => 'form-horizontal')) ?>
+	<?= $form->input('id_client', $client['id_client'], 'hidden') ?>
+	<div class="form-group">
+		<label for="raison_sociale" class="col-lg-2 control-label label-lg">Raison sociale</label>
+		<div class="col-lg-10">
+			<?= $form->input('raison_sociale', $client['raison_sociale'], 'text', array('class' => 'form-control input-lg', 'placeholder'=>'Raison sociale')) ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="nom" class="col-lg-2 control-label label-sm">Nom</label>
+		<div class="col-lg-4">
+			<?= $form->input('nom', $client['nom'], 'text', array('class' => 'form-control input-sm input-sm', 'placeholder'=>'Nom')) ?>
+		</div>
+		<label for="prenom" class="col-lg-2 control-label label-sm">Prénom</label>
+		<div class="col-lg-4">
+			<?= $form->input('prenom', $client['prenom'], 'text', array('class' => 'form-control input-sm', 'placeholder'=>'Prénom')) ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="adresse" class="col-lg-2 control-label label-sm">Adresse</label>
+		<div class="col-lg-10">
+			<?= $form->input('adresse', $client['adresse'], 'text', array('class' => 'form-control input-sm', 'placeholder'=>'Adresse')) ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="code_postal" class="col-lg-2 control-label label-sm">Code postal</label>
+		<div class="col-lg-4">
+			<?= $form->input('code_postal', $client['code_postal'], 'text', array('class' => 'form-control input-sm input-sm', 'placeholder'=>'Code postal')) ?>
+		</div>
+		<label for="ville" class="col-lg-2 control-label label-sm">Ville</label>
+		<div class="col-lg-4">
+			<?= $form->input('ville', $client['ville'], 'text', array('class' => 'form-control input-sm', 'placeholder'=>'Ville')) ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="telephone" class="col-lg-2 control-label label-sm">Téléphone</label>
+		<div class="col-lg-4">
+			<?= $form->input('telephone', $client['telephone'], 'text', array('class' => 'form-control input-sm input-sm', 'placeholder'=>'Téléphone')) ?>
+		</div>
+		<label for="mobile" class="col-lg-2 control-label label-sm">Mobile</label>
+		<div class="col-lg-4">
+			<?= $form->input('mobile', $client['mobile'], 'text', array('class' => 'form-control input-sm', 'placeholder'=>'Mobile')) ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="fax" class="col-lg-2 control-label label-sm">Fax</label>
+		<div class="col-lg-4">
+			<?= $form->input('fax', $client['fax'], 'text', array('class' => 'form-control input-sm input-sm', 'placeholder'=>'Fax')) ?>
+		</div>
+		<label for="email" class="col-lg-2 control-label label-sm">Email</label>
+		<div class="col-lg-4">
+			<?= $form->input('email', $client['email'], 'email', array('class' => 'form-control input-sm', 'placeholder'=>'Email')) ?>
+		</div>
+	</div>
+
+	<hr>
+	
+	<div class="form-group">
+		<div class="col-lg-offset-2 col-lg-4">
+			<?= $form->buttons('Modifier le client', ROOT.'clients', array('class' => 'btn btn-primary')) ?>
+		</div>
+	</div>
+</form>
