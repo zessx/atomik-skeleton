@@ -7,7 +7,7 @@ Atomik::set(array(
 
 	'plugins' => array(
 		'DebugBar' => array(
-			'include_vendors' => 'css'
+			'include_vendors' => array('css', 'js')
 		),
 		'Errors' => array(
 			'catch_errors' => true
