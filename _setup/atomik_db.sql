@@ -35,3 +35,18 @@ INSERT INTO `employes` (`id_employe`, `nom`, `prenom`, `role`, `identifiant`, `m
 	(1, 'Administrateur', 'M.', 'administrateur', 'admin', '4dcdd763e140ca7fabf4ecf12ccb8383bf164d59', '21232f297a57a5a743894a0e4a801fc3'),
 	(2, 'Utilisateur', 'M.', 'utilisateur', 'user', '5e0f76b90574332a6aaad1a09c9d64885c86dc50', 'ee11cbb19052e40b07aac0ca060c23ee');
 /*!40000 ALTER TABLE `employes` ENABLE KEYS */;
+
+-- Dumping structure for table loccapi_db.logs
+DROP TABLE IF EXISTS `logs`;
+CREATE TABLE IF NOT EXISTS `logs` (
+  `id_log` int(10) NOT NULL AUTO_INCREMENT,
+  `date` datetime DEFAULT NULL,
+  `employe` int(10) DEFAULT NULL,
+  `objet` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id_objet` int(11) DEFAULT NULL,
+  `action` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `commentaire` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id_log`),
+  KEY `employe` (`employe`),
+  KEY `id_objet` (`id_objet`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

@@ -28,6 +28,7 @@ if(!$employe) {
     Atomik::set('session.user.name',    $employe['prenom'].' '.$employe['nom']);
     Atomik::set('session.user.role',    $employe['role']);
 
+    Tools::log('employes', $employe['id_employe'], 'connexion');
 	$this->flash('Bienvenue, '.Atomik::get('session.user.name'), 'success');
 	$this->redirect(ROOT);
 
