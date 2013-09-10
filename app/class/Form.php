@@ -3,16 +3,16 @@
 class Form 
 {
 
-	const TEXT_TYPE		= 'text';
+	const TEXT_TYPE			= 'text';
 	const HIDDEN_TYPE		= 'hidden';
-	const TEXTAREA_TYPE	= 'textarea';
-	const CHECKBOX_TYPE	= 'checkbox';
+	const TEXTAREA_TYPE		= 'textarea';
+	const CHECKBOX_TYPE		= 'checkbox';
 	const RADIO_TYPE		= 'radio';
 	const SELECT_TYPE		= 'select';
 
-	const LIGHT_WEIGHT 	= '-sm';
+	const LIGHT_WEIGHT 		= '-sm';
 	const MEDIUM_WEIGHT 	= '-md';
-	const HEAVY_WEIGHT 	= '-lg';
+	const HEAVY_WEIGHT 		= '-lg';
 
 	const FULL_SIZE 		= '-10';
 	const HALF_SIZE 		= '-4';
@@ -22,25 +22,24 @@ class Form
 
 		$group = 0;
 
-		foreach ($fields as $key => $field) {
+		foreach ($fields as $_key => $field) {
 
-			if(!isset($field['type'])) 			$field['type'] = self::TEXT_TYPE;
-			if(!isset($field['size'])) 			$field['size'] = self::FULL_SIZE;
-			if(!isset($field['weight'])) 		$field['weight'] = self::LIGHT_WEIGHT;
-			if(!isset($field['label'])) 		$field['label'] = $key;
-			if(!isset($field['required'])) 		$field['required'] = false;
+			$_type 		= isset($field['type']) 	? $field['type'] 		: self::TEXT_TYPE;
+			$_size 		= isset($field['size']) 	? $field['size'] 		: self::FULL_SIZE;
+			$_weight 	= isset($field['weight']) 	? $field['weight'] 		: self::LIGHT_WEIGHT;
+			$_label 	= isset($field['label']) 	? $field['label'] 		: $_key;
+			$_required 	= isset($field['required']) ? $field['required'] 	: false;
+			$_options 	= isset($field['options']) 	? $field['options'] 	: array();
 
 			$value = null;
-			if($object != null && isset($object[$key]))
-				$value = $object[$key];
+			if($object != null && isset($object[$_key]))
+				$value = $object[$_key];
 
-			$class_label 	= 'col-lg-2 control-label label'.$field['weight'];
-			$class_wrap 	= 'col-lg'.$field['size'];
-			$class_input 	= 'form-control input'.$field['weight'];
+			$class_label 	= 'col-lg-2 control-label label'.$_weight;
 
-			$group_open		= '<div class="form-group'.($field['required'] ? ' required' : '').'">'.EOL;
+			$group_open		= '<div class="form-group'.($_required ? ' required' : '').'">'.EOL;
 			$group_close	=  '</div>'.EOL;
-			if($field['size'] == self::HALF_SIZE) {
+			if($_size == self::HALF_SIZE) {
 				if($group == 0) {
 					$group_close = '';
 				} elseif($group == 1) {
@@ -51,40 +50,41 @@ class Form
 
 			echo $group_open;
 				
-			switch($field['type']) {
+			switch($_type) {
 
 				case self::TEXT_TYPE:
-					echo '<label for="'.$key.'" class="'.$class_label.'">'.$field['label'].'</label>'.EOL;
-					echo '<div class="'.$class_wrap.'">'.EOL;
-						echo $form->input($key, $value, 'text', array('class' => $class_input, 'placeholder' => $field['label'])).EOL;
+					echo '<label for="'.$_key.'" class="'.$class_label.'">'.$_label.'</label>'.EOL;
+					echo '<div class="col-lg'.$_size.'">'.EOL;
+						echo $form->input($_key, $value, 'text', array('class' => 'form-control input'.$_weight, 'placeholder' => $_label)).EOL;
 					echo '</div>'.EOL;
 					break;
 
 				case self::HIDDEN_TYPE:
-					echo $form->hidden($key, $value).EOL;
+					echo $form->hidden($_key, $value).EOL;
 					break;
 
 				case self::TEXTAREA_TYPE:
-					echo '<label for="'.$key.'" class="'.$class_label.'">'.$field['label'].'</label>'.EOL;
-					echo $form->textarea($key, $value).EOL;
+					echo '<label for="'.$_key.'" class="'.$class_label.'">'.$_label.'</label>'.EOL;
+					echo $form->textarea($_key, $value).EOL;
 					break;
 
 				case self::CHECKBOX_TYPE:
 					//@TODO
-					echo '<label for="'.$key.'" class="'.$class_label.'">'.$field['label'].'</label>'.EOL;
-					echo $form->input($key, $value, 'hidden').EOL;
+					echo '<label for="'.$_key.'" class="'.$class_label.'">'.$_label.'</label>'.EOL;
+					echo $form->input($_key, $value, 'hidden').EOL;
 					break;
 
 				case self::RADIO_TYPE:
 					//@TODO
-					echo '<label for="'.$key.'" class="'.$class_label.'">'.$field['label'].'</label>'.EOL;
-					echo $form->input($key, $value, 'hidden').EOL;
+					echo '<label for="'.$_key.'" class="'.$class_label.'">'.$_label.'</label>'.EOL;
+					echo $form->input($_key, $value, 'hidden').EOL;
 					break;
 
 				case self::SELECT_TYPE:
-					//@TODO
-					echo '<label for="'.$key.'" class="'.$class_label.'">'.$field['label'].'</label>'.EOL;
-					echo $form->input($key, $value, 'hidden').EOL;
+					echo '<label for="'.$_key.'" class="'.$class_label.'">'.$_label.'</label>'.EOL;
+					echo '<div class="col-lg'.$_size.'">'.EOL;
+						echo $form->select($_key, $_options, $value, array('class' => 'form-control input'.$_weight)).EOL;
+					echo '</div>'.EOL;
 					break;
 
 			}
