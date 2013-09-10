@@ -27,7 +27,9 @@ Atomik::set(array(
 		'url_rewriting' => true,
 		'debug' => false,
 		'files' => array(
-			'bootstrap' => 'app/init.php'
+			'bootstrap' => 'app/init.php',
+			'pre_dispatch' => 'app/pre.php',
+			'post_dispatch' => 'app/post.php'
 		)
 	),
 
