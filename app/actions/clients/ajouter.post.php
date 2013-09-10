@@ -1,15 +1,40 @@
 <?php
 
 $fields = array(
+    'raison_sociale' => array(
+        'required' => true,
+        'filter'    => FILTER_SANITIZE_STRING,
+    ),
     'nom' => array(
-    	'required' 	=> true,
-        'filter' 	=> FILTER_SANITIZE_STRING,
+        'filter'    => FILTER_SANITIZE_STRING,
     ),
     'prenom' => array(
-    	'required' => true,
-        'filter' 	=> FILTER_SANITIZE_STRING,
+        'filter'    => FILTER_SANITIZE_STRING,
+    ),
+    'adresse' => array(
+        'filter'    => FILTER_SANITIZE_STRING,
+    ),
+    'code_postal' => array(
+        'filter'    => FILTER_SANITIZE_STRING,
+    ),
+    'ville' => array(
+        'filter'    => FILTER_SANITIZE_STRING,
+    ),
+    'telephone' => array(
+        'filter'    => FILTER_SANITIZE_STRING,
+    ),
+    'mobile' => array(
+        'filter'    => FILTER_SANITIZE_STRING,
+    ),
+    'fax' => array(
+        'filter'    => FILTER_SANITIZE_STRING,
+    ),
+    'email' => array(
+        'required' => true,
+        'filter'    => FILTER_VALIDATE_EMAIL,
     ),
 );
+
 
 if (($data = $this->filter($_POST, $fields)) === false) {
     $this->flash($this['helpers.filters.messages'], 'danger');

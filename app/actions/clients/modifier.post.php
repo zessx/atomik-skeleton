@@ -9,10 +9,10 @@ $fields = array(
         'filter'    => FILTER_SANITIZE_STRING,
     ),
     'nom' => array(
-        'filter' 	=> FILTER_SANITIZE_STRING,
+        'filter'    => FILTER_SANITIZE_STRING,
     ),
     'prenom' => array(
-        'filter' 	=> FILTER_SANITIZE_STRING,
+        'filter'    => FILTER_SANITIZE_STRING,
     ),
     'adresse' => array(
         'filter'    => FILTER_SANITIZE_STRING,
