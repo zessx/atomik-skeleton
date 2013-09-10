@@ -24,9 +24,9 @@ if(!$employe) {
 	$this->flash('Identifiant ou mot de passe incorrect', 'danger');
 } else {
 
-	$_SESSION['user.id'] 	= $employe['id_employe'];
-	$_SESSION['user.name'] 	= $employe['prenom'].' '.$employe['nom'];
-	$_SESSION['user.role'] 	= $employe['role'];
+    Atomik::set('session.user.id',      $employe['id_employe']);
+    Atomik::set('session.user.name',    $employe['prenom'].' '.$employe['nom']);
+    Atomik::set('session.user.role',    $employe['role']);
 
 	$this->flash('Bienvenue, '.Atomik::get('session.user.name'), 'success');
 	$this->redirect(ROOT);

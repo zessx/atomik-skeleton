@@ -3,16 +3,14 @@
 define('ROOT', 	'http://'.$_SERVER['SERVER_NAME'].'/'.Atomik::get('base_dir'));
 define('PAGE', 	isset($_GET['action']) ? $_GET['action'] : '');
 
-session_start();
-
-if(!isset($_SESSION['user.id'])) {
+if(!Atomik::has('session.user')) {
 	if(PAGE != 'connexion')
 		Atomik::redirect(ROOT.'connexion');
 } else {
-	define('USER_ID',		$_SESSION['user.id']);
-	define('USER_NAME',		$_SESSION['user.name']);
-	define('USER_ROLE', 	$_SESSION['user.role']);
-	define('USER_ADMIN', 	$_SESSION['user.role'] == 'administrateur');
+	define('USER_ID',		Atomik::get('session.user.id'));
+	define('USER_NAME',		Atomik::get('session.user.name'));
+	define('USER_ROLE', 	Atomik::get('session.user.role'));
+	define('USER_ADMIN', 	Atomik::get('session.user.role') == 'administrateur');
 }
 
 /* Générer un nouvel utilisateur */

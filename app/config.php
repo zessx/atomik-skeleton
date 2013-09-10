@@ -13,7 +13,7 @@ Atomik::set(array(
 			'catch_errors' => true
 		),
 		'Session' => array(
-			'autostart' => false
+			'autostart' => true
 		),
 		'Flash',
 		'Db' => array(
