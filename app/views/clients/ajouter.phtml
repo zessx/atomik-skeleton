@@ -1,56 +1,5 @@
 <?= $form = $this->form(ROOT.'clients/ajouter', null, array('class' => 'form-horizontal')) ?>
-	<div class="form-group">
-		<label for="raison_sociale" class="col-lg-2 control-label label-lg">Raison sociale</label>
-		<div class="col-lg-10">
-			<?= $form->input('raison_sociale', null, 'text', array('class' => 'form-control input-lg', 'placeholder'=>'Raison sociale')) ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="nom" class="col-lg-2 control-label label-sm">Nom</label>
-		<div class="col-lg-4">
-			<?= $form->input('nom', null, 'text', array('class' => 'form-control input-sm input-sm', 'placeholder'=>'Nom')) ?>
-		</div>
-		<label for="prenom" class="col-lg-2 control-label label-sm">Prénom</label>
-		<div class="col-lg-4">
-			<?= $form->input('prenom', null, 'text', array('class' => 'form-control input-sm', 'placeholder'=>'Prénom')) ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="adresse" class="col-lg-2 control-label label-sm">Adresse</label>
-		<div class="col-lg-10">
-			<?= $form->input('adresse', null, 'text', array('class' => 'form-control input-sm', 'placeholder'=>'Adresse')) ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="code_postal" class="col-lg-2 control-label label-sm">Code postal</label>
-		<div class="col-lg-4">
-			<?= $form->input('code_postal', null, 'text', array('class' => 'form-control input-sm input-sm', 'placeholder'=>'Code postal')) ?>
-		</div>
-		<label for="ville" class="col-lg-2 control-label label-sm">Ville</label>
-		<div class="col-lg-4">
-			<?= $form->input('ville', null, 'text', array('class' => 'form-control input-sm', 'placeholder'=>'Ville')) ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="telephone" class="col-lg-2 control-label label-sm">Téléphone</label>
-		<div class="col-lg-4">
-			<?= $form->input('telephone', null, 'text', array('class' => 'form-control input-sm input-sm', 'placeholder'=>'Téléphone')) ?>
-		</div>
-		<label for="mobile" class="col-lg-2 control-label label-sm">Mobile</label>
-		<div class="col-lg-4">
-			<?= $form->input('mobile', null, 'text', array('class' => 'form-control input-sm', 'placeholder'=>'Mobile')) ?>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="fax" class="col-lg-2 control-label label-sm">Fax</label>
-		<div class="col-lg-4">
-			<?= $form->input('fax', null, 'text', array('class' => 'form-control input-sm input-sm', 'placeholder'=>'Fax')) ?>
-		</div>
-		<label for="email" class="col-lg-2 control-label label-sm">Email</label>
-		<div class="col-lg-4">
-			<?= $form->input('email', null, 'email', array('class' => 'form-control input-sm', 'placeholder'=>'Email')) ?>
-		</div>
-	</div>
+<?= Form::generateFields($form, $fields) ?>
 
 	<hr>
 	
