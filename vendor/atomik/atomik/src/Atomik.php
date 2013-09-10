@@ -188,16 +188,16 @@ final class Atomik implements ArrayAccess
                         }
                     }
             }
-            
-            self::fireEvent('Atomik::Bootstrap');
-            if ($filename = self::path(self::get('atomik.files.bootstrap'))) {
-                include $filename;
-            }
         
             $cancel = false;
             self::fireEvent('Atomik::Start', array(&$cancel));
             if ($cancel) {
                 self::end(true);
+            }
+
+            self::fireEvent('Atomik::Bootstrap');
+            if ($filename = self::path(self::get('atomik.files.bootstrap'))) {
+                include $filename;
             }
         
             if (!self::has('atomik.url_rewriting')) {
