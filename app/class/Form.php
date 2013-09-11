@@ -9,6 +9,7 @@ class Form
 	const CHECKBOX_TYPE		= 'checkbox';
 	const RADIO_TYPE		= 'radio';
 	const SELECT_TYPE		= 'select';
+	const FILE_TYPE			= 'file';
 
 	const LIGHT_WEIGHT 		= '-sm';
 	const MEDIUM_WEIGHT 	= '-md';
@@ -24,12 +25,13 @@ class Form
 
 		foreach ($fields as $_key => $field) {
 
-			$_type 		= isset($field['type']) 	? $field['type'] 		: self::TEXT_TYPE;
-			$_size 		= isset($field['size']) 	? $field['size'] 		: self::FULL_SIZE;
-			$_weight 	= isset($field['weight']) 	? $field['weight'] 		: self::LIGHT_WEIGHT;
-			$_label 	= isset($field['label']) 	? $field['label'] 		: $_key;
-			$_required 	= isset($field['required']) ? $field['required'] 	: false;
-			$_options 	= isset($field['options']) 	? $field['options'] 	: array();
+			$_type 		= isset($field['type']) 	? $field['type'] : self::TEXT_TYPE;
+			$_size 		= isset($field['size']) 	? $field['size'] : self::FULL_SIZE;
+			$_weight 	= isset($field['weight']) 	? $field['weight'] : self::LIGHT_WEIGHT;
+			$_label 	= isset($field['label']) 	? $field['label'] : $_key;
+			$_required 	= isset($field['required']) ? $field['required'] : false;
+			$_options 	= isset($field['options']) 	? $field['options'] : array();
+			$_help 		= isset($field['help']) 	? '<p class="help-block">'.$field['help'].'</p>'.EOL : '';
 
 			$value = null;
 			if($object != null && isset($object[$_key]))
@@ -56,6 +58,7 @@ class Form
 					echo '<label for="'.$_key.'" class="'.$class_label.'">'.$_label.'</label>'.EOL;
 					echo '<div class="col-lg'.$_size.'">'.EOL;
 						echo $form->input($_key, $value, 'text', array('class' => 'form-control input'.$_weight, 'placeholder' => $_label)).EOL;
+						echo $_help;
 					echo '</div>'.EOL;
 					break;
 
@@ -65,25 +68,34 @@ class Form
 
 				case self::TEXTAREA_TYPE:
 					echo '<label for="'.$_key.'" class="'.$class_label.'">'.$_label.'</label>'.EOL;
-					echo $form->textarea($_key, $value).EOL;
+					echo '<div class="col-lg'.$_size.'">'.EOL;
+						echo $form->textarea($_key, $value, array('class' => 'form-control input'.$_weight, 'rows' => '7', 'placeholder' => $_label)).EOL;
+						echo $_help;
+					echo '</div>'.EOL;
 					break;
 
 				case self::CHECKBOX_TYPE:
 					//@TODO
-					echo '<label for="'.$_key.'" class="'.$class_label.'">'.$_label.'</label>'.EOL;
-					echo $form->input($_key, $value, 'hidden').EOL;
 					break;
 
 				case self::RADIO_TYPE:
 					//@TODO
-					echo '<label for="'.$_key.'" class="'.$class_label.'">'.$_label.'</label>'.EOL;
-					echo $form->input($_key, $value, 'hidden').EOL;
 					break;
 
 				case self::SELECT_TYPE:
 					echo '<label for="'.$_key.'" class="'.$class_label.'">'.$_label.'</label>'.EOL;
 					echo '<div class="col-lg'.$_size.'">'.EOL;
 						echo $form->select($_key, $_options, $value, array('class' => 'form-control input'.$_weight)).EOL;
+						echo $_help;
+					echo '</div>'.EOL;
+					break;
+
+				case self::FILE_TYPE:
+					//@TODO
+					echo '<label for="'.$_key.'" class="'.$class_label.'">'.$_label.'</label>'.EOL;
+					echo '<div class="col-lg'.$_size.'">'.EOL;
+						echo $form->file($_key).EOL;
+						echo $_help;
 					echo '</div>'.EOL;
 					break;
 
