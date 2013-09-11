@@ -2,7 +2,7 @@
 
 Atomik::set(array(
 
-	'base_dir' => 'test/atomik/',
+	'base_dir' => 'atomik-skeleton/',
 	'autostart' => false,
 
 	'plugins' => array(
