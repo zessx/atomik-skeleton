@@ -1,5 +1,6 @@
 <?php
 
+/* Local conf */
 Atomik::set(array(
 
 	'base_dir' => 'atomik-skeleton/',
@@ -59,4 +60,23 @@ Atomik::set(array(
 	)	
 	
 ));
+
+
+if(substr($_SERVER['SERVER_ADDR'], 0, 3) != "127") {
+
+	/* Remote conf */ 
+	Atomik::set(array(
+
+		'base_dir' => '',
+
+		'plugins' => array(
+			'Db' => array(
+				'dsn' => 'mysql:host=localhost;dbname=atomik_db',
+				'username' => 'root',
+				'password' => ''
+			)
+		),
+	));
+
+}
 
