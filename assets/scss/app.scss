@@ -43,6 +43,10 @@ footer {
 	}
 }
 
+.tab-content {
+	padding-top: 20px;
+}
+
 /* #############################
               Form 
 ############################### */
@@ -119,4 +123,6 @@ table {
 	.sorting_desc 	{ background: url('../images/sort_desc.png') no-repeat center right; }
 	.sorting_asc_disabled { background: url('../images/sort_asc_disabled.png') no-repeat center right; }
 	.sorting_desc_disabled { background: url('../images/sort_desc_disabled.png') no-repeat center right; }
+
+	.progress 		{ margin-bottom: 0; }
 }

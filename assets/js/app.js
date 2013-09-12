@@ -65,4 +65,14 @@ $(document).ready(function(){
     	language: 'fr'
     });
 
+    /*
+    * Enable tabs direct links
+    */
+    if(hash = document.location.hash) {
+    	$('.nav-tabs a[href="'+hash.replace("#", "#tab_")+'"]').tab('show');
+    } 
+    $('.nav-tabs').click('a', function(ev) {
+    	window.location.hash = ev.target.hash.replace("#tab_", "#");
+    })
+
 });

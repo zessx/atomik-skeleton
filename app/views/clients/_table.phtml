@@ -1,0 +1,25 @@
+<table class="table table-hover table-condensed table-enhanced table-bordered table-striped" data-sort-cols="1" data-sort-dirs="asc">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<?php foreach ($clients as $client): ?>
+    	<tr>
+			<td><?= $this->escape($client['id_client']) ?></td>
+			<td><?= $this->escape($client['nom']) ?></td>
+			<td><?= $this->escape($client['prenom']) ?></td>
+            <td class="col-actions">
+                <div class="pull-right">
+                    <a type="button" class="btn btn-primary btn-xs" href="<?= ROOT.'clients/modifier/'.$client['id_client'] ?>" title="Modifier le client"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a type="button" class="btn btn-danger btn-xs btn-delete" href="<?= ROOT.'clients/supprimer/'.$client['id_client'] ?>" title="Supprimer le client"  data-modal-content="Êtes-vous sur de vouloir supprimer ce client ?"><span class="glyphicon glyphicon-remove"></span></a>
+                </div>
+            </td>
+		</tr>
+		<?php endforeach; ?>
+    </tbody>
+</table>

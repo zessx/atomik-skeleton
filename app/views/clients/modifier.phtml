@@ -1,11 +1,21 @@
-<?= $form = $this->form(ROOT.'clients/modifier/'.$client['id_client'], null, array('class' => 'form-horizontal')) ?>
-<?= Form::generateFields($form, $fields, $client) ?>
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#tab_informations" data-toggle="tab">Informations sur le client</a></li>
+</ul>
 
-	<hr>
-	
-	<div class="form-group">
-		<div class="col-lg-offset-2 col-lg-4">
-			<?= $form->buttons('Modifier le client', ROOT.'clients', array('class' => 'btn btn-primary')) ?>
-		</div>
+<div class="tab-content">
+
+	<div class="tab-pane active" id="tab_informations">
+		<?= $form = $this->form(ROOT.'clients/modifier/'.$client['id_client'], null, array('class' => 'form-horizontal')) ?>
+		<?= Form::generateFields($form, $fields, $client) ?>
+
+			<hr>
+			
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-4">
+					<?= $form->buttons('Modifier le client', ROOT.'clients', array('class' => 'btn btn-primary')) ?>
+				</div>
+			</div>
+		</form>
 	</div>
-</form>
+
+</div>
