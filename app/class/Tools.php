@@ -22,4 +22,22 @@ class Tools
 		Atomik::flash('User : '.$login.'<br>Pass : '.$psswd.'<br>Salt : '.$salt.'<br>Hash : '.$hash, 'success');
 	}
 
+	/* Retourne la classe correspondant à l'avancement */
+	public static function getProgressClass($percent) {
+		if($percent < 75) return 'success';
+		if($percent < 90) return 'warning';
+		return 'danger';
+	}
+
+	/* Retourne la classe correspondant à la proximité de l'échéance */
+	public static function getTermClass($date) {
+		$start = date_create('now');
+		$end = date_create($date);
+		$interval = date_diff($start, $end);
+		$lastdays = $interval->format('%a');
+		if($lastdays > 30) return 'success';
+		if($lastdays > 10) return 'warning';
+		return 'danger';
+	}
+
 }
