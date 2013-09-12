@@ -76,6 +76,11 @@ if(substr($_SERVER['SERVER_ADDR'], 0, 3) != "127") {
 				'password' => ''
 			)
 		),
+
+		'atomik' => array(
+			'debug' => false,
+		),
+		
 	));
 
 }
