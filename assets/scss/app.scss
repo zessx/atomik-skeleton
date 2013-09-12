@@ -1,3 +1,6 @@
+/* #############################
+            Layout
+############################### */
 body {
 	background-color: #F5F5F5;
 	padding-top: 60px;
@@ -40,17 +43,43 @@ footer {
 	}
 }
 
+/* #############################
+              Form 
+############################### */
 .form-horizontal {
+	.form-group {
+		margin: 0 0 5px;
+		overflow: hidden;
+
+		.field-wrap {
+			padding-right: 0;
+		}
+
+		&.col-lg-6 {
+			label {
+				width: 34.6666%;
+			}
+			.field-wrap {
+				width: 65.33333%;
+			}
+		}
+	}
 	.control-label.label-sm {
-		padding-top: 4px;
+		padding: 4px 0 0;
 	}
 	.control-label.label-lg {
-		padding-top: 14px;
+		padding: 14px 0 0;
+	}
+	input[type="checkbox"] {
+		margin-top: 0;
+	}
+	textarea {
+		resize: vertical;
 	}
 }
 
 /* #############################
-   DataTable Bootstrap style
+            DataTable 
 ############################### */
 div.dataTables_length {
 	label {
@@ -79,8 +108,7 @@ div.dataTables_paginate {
     ul.pagination {
     	margin: 0;
     }
-}
- 
+} 
 table {
     margin: 1em 0;
     clear: both;

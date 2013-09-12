@@ -57,5 +57,12 @@ $(document).ready(function(){
 		modal.modal('show');
 	});
 
+	/*
+	* Datepickers
+	*/
+    $(".datepicker").datepicker({
+    	format: 'dd/mm/yyyy',
+    	language: 'fr'
+    });
 
 });
