@@ -41,12 +41,15 @@ Contient des fonctions utilitaires
 
 Permet de générer des champs avec les classes de Bootstrap 3 : <br>
 Pour chaque champ, des options sont fixées :<br>
-- `type`     : type du champ
+- `type`     : type du champ (hidden, text, textarea, checkbox, select, file, date)
 - `size`     : largeur du champ (pour des formulaires sur 1 ou 2 colonnes)
 - `weight`   : importance du champ (définit sa hauteur)
 - `label`    : label du champ
 - `required` : le champ est-il requit
 - `options`  : pour le type "select"
+- `checked`  : pour le type "checkbox"
+- `help`     : texte d'aide placé sous le champ
+- `link`     : lien ajouté sur le label 
 
 Exemple d'utilisation :
 ```
@@ -74,7 +77,7 @@ $fields = array(
 ```
 /* view.php */
 <?= $form = $this->form($url_send, null, array('class' => 'form-horizontal')) ?>
-<?= Form::generateFields($form, $fields, $etablissement) ?>
+<?= Form::generateFields($form, $fields, $object) ?>
 
 	<hr>
 	
