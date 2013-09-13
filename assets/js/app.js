@@ -1,4 +1,15 @@
 $(document).ready(function(){
+	
+	/*
+	* Left nav
+	*/
+	$('.sidenav[data-spy="affix"]').affix({
+		offset: { 
+			bottom: function () {
+				return (this.bottom = $('footer').outerHeight(true) + 60)
+			}
+		}
+	});
 
 	/*
 	* Enhanced data tables

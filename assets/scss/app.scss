@@ -37,8 +37,7 @@ footer {
 }
 
 .sidenav {
-	position: fixed;
-	top: 80px;
+	width: 255px;
 	background-color: #F5F5F5;
 	border-radius: 5px;
 	border: 1px solid #E5E5E5;
@@ -58,6 +57,9 @@ footer {
 			background: #EEE;
 		}
 	}
+
+	&.affix 		{ position: fixed; top: 80px; }
+	&.affix-bottom 	{ position: absolute; }
 }
 
 .tab-content {
