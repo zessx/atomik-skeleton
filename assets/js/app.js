@@ -86,4 +86,11 @@ $(document).ready(function(){
     	window.location.hash = ev.target.hash.replace("#tab_", "#");
     })
 
+    /*
+	* Show password
+	*/
+    $("input:password")
+    	.on('focusin', function(ev) { $(this).attr('type', 'text'); })
+    	.on('focusout', function(ev) { $(this).attr('type', 'password'); });
+
 });

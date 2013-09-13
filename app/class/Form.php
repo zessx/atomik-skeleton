@@ -4,6 +4,7 @@ class Form
 {
 
 	const TEXT_TYPE			= 'text';
+	const PASSWORD_TYPE		= 'password';
 	const HIDDEN_TYPE		= 'hidden';
 	const TEXTAREA_TYPE		= 'textarea';
 	const CHECKBOX_TYPE		= 'checkbox';
@@ -69,6 +70,22 @@ class Form
 					case self::TEXT_TYPE:
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo $form->input($_key, $value, 'text', 
+								array_merge(
+									($_disabled ? array('disabled' => '') : array()), 
+									array(
+										'class' 		=> 'form-control input'.$_weight, 
+										'placeholder' 	=> $_label, 
+										'title' 		=> $title_input,
+									)
+								)
+							).EOL;
+							echo $_help;
+						echo '</div>'.EOL;
+						break;
+
+					case self::PASSWORD_TYPE:
+						echo '<div class="'.$class_wrap.'">'.EOL;
+							echo $form->input($_key, $value, 'password', 
 								array_merge(
 									($_disabled ? array('disabled' => '') : array()), 
 									array(

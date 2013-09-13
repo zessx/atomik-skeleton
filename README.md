@@ -41,7 +41,7 @@ Contient des fonctions utilitaires
 
 Permet de générer des champs avec les classes de Bootstrap 3 : <br>
 Pour chaque champ, des options sont fixées :<br>
-- `type`     : type du champ (hidden, text, textarea, checkbox, select, file, date)
+- `type`     : type du champ (hidden, text, textarea, checkbox, select, file, date, password)
 - `size`     : largeur du champ (pour des formulaires sur 1 ou 2 colonnes)
 - `weight`   : importance du champ (définit sa hauteur)
 - `label`    : label du champ
