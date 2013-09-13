@@ -46,6 +46,7 @@ Pour chaque champ, des options sont fixées :<br>
 - `weight`   : importance du champ (définit sa hauteur)
 - `label`    : label du champ
 - `required` : le champ est-il requit
+- `disabled` : désactive le champ
 - `options`  : pour le type "select"
 - `checked`  : pour le type "checkbox"
 - `help`     : texte d'aide placé sous le champ

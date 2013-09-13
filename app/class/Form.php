@@ -35,6 +35,7 @@ class Form
 			$_weight 	= isset($field['weight']) 	? $field['weight'] : self::LIGHT_WEIGHT;
 			$_label 	= isset($field['label']) 	? $field['label'] : $_key;
 			$_required 	= isset($field['required']) ? $field['required'] : false;
+			$_disabled 	= isset($field['disabled']) ? $field['disabled'] : false;
 			$_options 	= isset($field['options']) 	? $field['options'] : array();
 			$_checked	= isset($field['checked']) 	? $field['checked'] : 0;
 			$_help 		= isset($field['help']) 	? '<p class="help-block">'.$field['help'].'</p>'.EOL : '';
@@ -59,33 +60,71 @@ class Form
 				switch($_type) {
 
 					case self::HIDDEN_TYPE:
-						echo $form->hidden($_key, $value).EOL;
+						echo $form->hidden(
+							$_key, 
+							$value
+						).EOL;
 						break;
 
 					case self::TEXT_TYPE:
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->input($_key, $value, 'text', array('class' => 'form-control input'.$_weight, 'placeholder' => $_label, 'title' => $title_input)).EOL;
+							echo $form->input($_key, $value, 'text', 
+								array_merge(
+									($_disabled ? array('disabled' => '') : array()), 
+									array(
+										'class' 		=> 'form-control input'.$_weight, 
+										'placeholder' 	=> $_label, 
+										'title' 		=> $title_input,
+									)
+								)
+							).EOL;
 							echo $_help;
 						echo '</div>'.EOL;
 						break;
 
 					case self::TEXTAREA_TYPE:
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->textarea($_key, $value, array('class' => 'form-control input'.$_weight, 'rows' => '7', 'placeholder' => $_label, 'title' => $title_input)).EOL;
+							echo $form->textarea($_key, $value, 
+								array_merge(
+									($_disabled ? array('disabled' => '') : array()), 
+									array(
+										'class' 		=> 'form-control input'.$_weight, 
+										'rows' 			=> '7', 
+										'placeholder' 	=> $_label, 
+										'title' 		=> $title_input,
+									)
+								)
+							).EOL;
 							echo $_help;
 						echo '</div>'.EOL;
 						break;
 
 					case self::CHECKBOX_TYPE:
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->checkbox($_key, $_checked, $value, array('class' => 'input'.$_weight, 'title' => $title_input)).EOL;
+							echo $form->checkbox($_key, $_checked, $value,  
+								array_merge(
+									($_disabled ? array('disabled' => '') : array()), 
+									array(
+										'class' 		=> 'input'.$_weight, 
+										'title' 		=> $title_input,
+									)
+								)
+							).EOL;
 							echo $_help;
 						echo '</div>'.EOL;
 						break;
 
 					case self::SELECT_TYPE:
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->select($_key, $_options, $value, array('class' => 'form-control input'.$_weight, 'title' => $title_input)).EOL;
+							echo $form->select($_key, $_options, $value, 
+								array_merge(
+									($_disabled ? array('disabled' => '') : array()), 
+									array(
+										'class' 		=> 'form-control input'.$_weight, 
+										'title' 		=> $title_input,
+									)
+								)
+							).EOL;
 							echo $_help;
 						echo '</div>'.EOL;
 						break;
@@ -93,7 +132,14 @@ class Form
 					case self::FILE_TYPE:
 						//@TODO
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->file($_key, array('title' => $title_input)).EOL;
+							echo $form->file($_key, 
+								array_merge(
+									($_disabled ? array('disabled' => '') : array()), 
+									array(
+										'title' 		=> $title_input,
+									)
+								)
+							).EOL;
 							echo $_help;
 						echo '</div>'.EOL;
 						break;
@@ -101,7 +147,16 @@ class Form
 					case self::DATE_TYPE:
 						//@TODO
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->input($_key, ($value == null ? null : date('d/m/Y', strtotime($value))), 'text', array('class' => 'form-control datepicker input'.$_weight, 'placeholder' => $_label, 'title' => $title_input)).EOL;
+							echo $form->input($_key, ($value == null ? null : date('d/m/Y', strtotime($value))), 'text', 
+								array_merge(
+									($_disabled ? array('disabled' => '') : array()), 
+									array(
+										'class' 		=> 'form-control datepicker input'.$_weight,
+										'placeholder' 	=> $_label,
+										'title' 		=> $title_input,
+									)
+								)
+							).EOL;
 							echo $_help;
 						echo '</div>'.EOL;
 						break;
