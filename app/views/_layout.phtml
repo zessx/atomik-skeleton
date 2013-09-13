@@ -34,7 +34,9 @@
 					
 					<ul class="nav navbar-nav pull-right hidden-xs">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenue, <?= Atomik::get('session.user.name') ?> <b class="caret"></b></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span class="glyphicon glyphicon-user"></span>
+								<span class="username"> Bienvenue, <?= Atomik::get('session.user.name') ?></span> <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="<?= ROOT ?>compte"><span class="glyphicon glyphicon-pencil"></span> Mon compte</a></li>
 								<li><a href="<?= ROOT ?>deconnexion"><span class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
@@ -68,7 +70,7 @@
 
 							<li><h4><span class="glyphicon glyphicon-user"></span> Gestion de l'extranet</h4></li>
 							<li><a <?= Atomik::uriMatch('/compte*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>compte">Mon compte</a></li>
-							<?php if(ROLE_ADMIN) { ?><li><a <?= Atomik::uriMatch('/employes*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>employes">Employés</a></li><?php } ?>
+							<?php if(ROLE_ADMIN) { ?><li><a <?= Atomik::uriMatch('/utilisateurs*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>utilisateurs">Utilisateurs</a></li><?php } ?>
 						</ul>
 					  </div>
 				</div>

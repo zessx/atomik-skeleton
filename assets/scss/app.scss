@@ -6,9 +6,26 @@ body {
 	padding-top: 60px;
 }
 
+header {
+	nav {
+		.username {
+			display: inline-block;
+		}
+	}
+}
+@media (max-width: 991px) and (min-width: 768px) {
+	header {
+		nav {
+			.username {
+				display: none;
+			}
+		}
+	}
+}
+
 section {
 	background-color: white;
-	min-height: 520px;
+	min-height: 600px;
 	padding-bottom: 60px;
 }
 

@@ -41,8 +41,8 @@ Atomik::set(array(
 
 			'404' 			=> array('action' => '404'),
 
-			'connexion' 		=> array('action' => 'employes/connexion'),
-			'deconnexion' 		=> array('action' => 'employes/deconnexion'),
+			'connexion' 		=> array('action' => 'utilisateurs/connexion'),
+			'deconnexion' 		=> array('action' => 'utilisateurs/deconnexion'),
 
 			'clients'			=> array('action' => 'clients/index'),
 			'clients/ajouter'		=> array('action' => 'clients/ajouter'),

@@ -6,12 +6,12 @@ class Tools
 	/* Ajoute un log en BDD */
 	public static function log($object, $id, $action, $comment = '') {
 		Atomik::get('db')->insert('logs', array(
-			'date' 			=> date('Y-m-d H:i:s'),
-			'employe'	 	=> Atomik::get('session.user.id'),
-			'objet'		 	=> $object,
-			'id_objet'		=> $id,
-			'action' 		=> $action,
-			'commentaire' 	=> $comment
+			'date' 				=> date('Y-m-d H:i:s'),
+			'id_utilisateur'	=> Atomik::get('session.user.id'),
+			'objet'		 		=> $object,
+			'id_objet'			=> $id,
+			'action' 			=> $action,
+			'commentaire' 		=> $comment
 		));
 	}
 
