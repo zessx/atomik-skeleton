@@ -1,6 +1,6 @@
 <?php
 
-$title 	= 'Déconnexion';
+$title 		= 'Déconnexion';
 $subtitle	= '';
 
 Tools::log('utilisateurs', Atomik::get('session.user.id'), 'deconnexion');
