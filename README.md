@@ -1,5 +1,5 @@
-Atomik
-======
+Atomik Skeleton
+===============
 Structure de base pour un backend basé sur [Atomik Framework](http://atomikframework.com/) et [Bootstrap 3](getbootstrap.com)
 
 Installation
