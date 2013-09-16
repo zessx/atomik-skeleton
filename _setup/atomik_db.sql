@@ -20,6 +20,7 @@ DROP TABLE IF EXISTS `logs`;
 CREATE TABLE IF NOT EXISTS `logs` (
   `id_log` int(10) NOT NULL AUTO_INCREMENT,
   `date` datetime DEFAULT NULL,
+  `utilisateur` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `id_utilisateur` int(10) DEFAULT NULL,
   `objet` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `id_objet` int(11) DEFAULT NULL,
@@ -28,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   PRIMARY KEY (`id_log`),
   KEY `id_utilisateur` (`id_utilisateur`),
   KEY `id_objet` (`id_objet`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping structure for table atomik_db.utilisateurs
 DROP TABLE IF EXISTS `utilisateurs`;
