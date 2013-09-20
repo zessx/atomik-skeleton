@@ -40,7 +40,16 @@ class Form
 			$_options 	= isset($field['options']) 	? $field['options'] : array();
 			$_checked	= isset($field['checked']) 	? $field['checked'] : 0;
 			$_help 		= isset($field['help']) 	? '<p class="help-block">'.$field['help'].'</p>'.EOL : '';
-			$_link 		= isset($field['link']) 	? str_replace(':'.$_key, $value, $field['link']) : false;
+			$_link 		= false;
+
+			if(isset($field['link'])) {
+				$params = array();
+				preg_match('/(?<=:)[\w-]+/', $field['link'], $params);
+				$_link = $field['link'];
+				foreach ($params as $param) {
+					$_link = str_replace(':'.$param, $object[$param], $_link);
+				}
+			}
 
 			$class_label 	= 'col-lg-2 control-label label'.$_weight;
 			$class_wrap 	= 'field-wrap col-lg-10';
@@ -75,6 +84,7 @@ class Form
 									(count($_options) > 0 ? array(
 										'data-provide' => 'typeahead',
 										'data-items' => 8,
+										'data-value' => $value,
 										'data-source' => json_encode(array_values($_options)), 
 										'autocomplete' => 'false',
 									) : array()), 
