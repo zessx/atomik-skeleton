@@ -47,7 +47,7 @@ Pour chaque champ, des options sont fixées :<br>
 - `label`    : label du champ
 - `required` : le champ est-il requit
 - `disabled` : désactive le champ
-- `options`  : pour le type "select"
+- `options`  : pour le type "select", ou le type "text" avec un typeahead
 - `checked`  : pour le type "checkbox"
 - `help`     : texte d'aide placé sous le champ
 - `link`     : lien ajouté sur le label 
@@ -60,6 +60,12 @@ $fields = array(
         'label'     => 'Nom',
         'required'  => true,
         'weight'    => Form::HEAVY_WEIGHT,
+        'filter'    => FILTER_SANITIZE_STRING,
+    ),
+    'role' => array(
+        'label'     => 'Rôle',
+        'required'  => true,
+        'options'   => array('Administrateur', 'Modérateur', 'Rédacteur', 'Utilisateur', 'Invité'),
         'filter'    => FILTER_SANITIZE_STRING,
     ),
     'telephone' => array(

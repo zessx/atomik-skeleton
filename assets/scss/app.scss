@@ -72,12 +72,14 @@ footer {
 .form-horizontal {
 	.form-group {
 		margin: 0 0 5px;
-		overflow: hidden;
 
 		.field-wrap {
 			padding-right: 0;
 		}
-
+		
+		&.col-lg-12 {
+			clear: both;
+		}
 		&.col-lg-6 {
 			label {
 				width: 34.6666%;
@@ -145,3 +147,8 @@ table {
 
 	.progress 		{ margin-bottom: 0; }
 }
+
+/* #############################
+            Typehead 
+############################### */
+.typeahead { z-index: 1051; }

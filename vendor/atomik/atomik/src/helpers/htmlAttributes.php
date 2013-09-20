@@ -22,7 +22,10 @@ class HtmlAttributesHelper
                 ($exclude && in_array($key, (array) $filter)))) {
                 continue;
             }
-            $attrs[] = sprintf('%s="%s"', $key, $value);
+            if($key == 'data-source')
+                $attrs[] = sprintf('%s=\'%s\'', $key, $value);
+            else 
+                $attrs[] = sprintf('%s="%s"', $key, $value);
         }
         return implode(' ', $attrs);
     }

@@ -72,6 +72,12 @@ class Form
 							echo $form->input($_key, $value, 'text', 
 								array_merge(
 									($_disabled ? array('disabled' => '') : array()), 
+									(count($_options) > 0 ? array(
+										'data-provide' => 'typeahead',
+										'data-items' => 8,
+										'data-source' => json_encode(array_values($_options)), 
+										'autocomplete' => 'false',
+									) : array()), 
 									array(
 										'class' 		=> 'form-control input'.$_weight, 
 										'placeholder' 	=> $_label, 
