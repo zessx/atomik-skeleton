@@ -19,6 +19,8 @@ class Form
 
 	const FULL_SIZE 		= '-12';
 	const HALF_SIZE 		= '-6';
+	const THIRD_SIZE 		= '-4';
+	const QUARTER_SIZE 		= '-3';
 
 	/* Génère les champs formulaire à partir d'un tableau d'options */	
 	public static function generateFields($form, $fields, $object = null) {
