@@ -40,7 +40,7 @@ class Form
 			$_required 	= isset($field['required']) ? $field['required'] : false;
 			$_disabled 	= isset($field['disabled']) ? $field['disabled'] : false;
 			$_options 	= isset($field['options']) 	? $field['options'] : array();
-			$_checked	= isset($field['checked']) 	? $field['checked'] : 0;
+			$_checked	= isset($field['checked']) 	? $field['checked'] : (bool)$value;
 			$_help 		= isset($field['help']) 	? '<p class="help-block">'.$field['help'].'</p>'.EOL : '';
 			$_link 		= false;
 
