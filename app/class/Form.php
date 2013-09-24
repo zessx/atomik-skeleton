@@ -3,24 +3,24 @@
 class Form 
 {
 
-	const TEXT_TYPE			= 'text';
-	const PASSWORD_TYPE		= 'password';
-	const HIDDEN_TYPE		= 'hidden';
-	const TEXTAREA_TYPE		= 'textarea';
-	const CHECKBOX_TYPE		= 'checkbox';
-	const RADIO_TYPE		= 'radio';
-	const SELECT_TYPE		= 'select';
-	const FILE_TYPE			= 'file';
-	const DATE_TYPE			= 'date';
+	const TYPE_TEXT			= 'text';
+	const TYPE_PASSWORD		= 'password';
+	const TYPE_HIDDEN		= 'hidden';
+	const TYPE_TEXTAREA		= 'textarea';
+	const TYPE_CHECKBOX		= 'checkbox';
+	const TYPE_RADIO		= 'radio';
+	const TYPE_SELECT		= 'select';
+	const TYPE_FILE			= 'file';
+	const TYPE_DATE			= 'date';
 
-	const LIGHT_WEIGHT 		= '-sm';
-	const MEDIUM_WEIGHT 	= '-md';
-	const HEAVY_WEIGHT 		= '-lg';
+	const WEIGHT_LIGHT 		= '-sm';
+	const WEIGHT_MEDIUM 	= '-md';
+	const WEIGHT_HEAVY 		= '-lg';
 
-	const FULL_SIZE 		= '-12';
-	const HALF_SIZE 		= '-6';
-	const THIRD_SIZE 		= '-4';
-	const QUARTER_SIZE 		= '-3';
+	const SIZE_FULL 		= '-12';
+	const SIZE_HALF 		= '-6';
+	const SIZE_THIRD 		= '-4';
+	const SIZE_QUARTER 		= '-3';
 
 	/* Génère les champs formulaire à partir d'un tableau d'options */	
 	public static function generateFields($form, $fields, $object = null) {
@@ -33,9 +33,9 @@ class Form
 			if($object != null && isset($object[$_key]))
 				$value = $object[$_key];
 			
-			$_type 		= isset($field['type']) 	? $field['type'] : self::TEXT_TYPE;
-			$_size 		= isset($field['size']) 	? $field['size'] : self::FULL_SIZE;
-			$_weight 	= isset($field['weight']) 	? $field['weight'] : self::LIGHT_WEIGHT;
+			$_type 		= isset($field['type']) 	? $field['type'] : self::TYPE_TEXT;
+			$_size 		= isset($field['size']) 	? $field['size'] : self::SIZE_FULL;
+			$_weight 	= isset($field['weight']) 	? $field['weight'] : self::WEIGHT_LIGHT;
 			$_label 	= isset($field['label']) 	? $field['label'] : $_key;
 			$_required 	= isset($field['required']) ? $field['required'] : false;
 			$_disabled 	= isset($field['disabled']) ? $field['disabled'] : false;
@@ -59,7 +59,7 @@ class Form
 
 			echo '<div class="form-group col-lg'.$_size.($_required ? ' has-error' : '').'">'.EOL;
 				
-				if($_type != self::HIDDEN_TYPE) {
+				if($_type != self::TYPE_HIDDEN) {
 					if($_link && $value != null) {
 						echo '<a class="internal" href="'.$_link.'">';
 						echo '<label for="'.$_key.'" class="'.$class_label.'"><i class="glyphicon glyphicon-circle-arrow-right"></i>'.$_label.'</label>'.EOL;
@@ -71,14 +71,14 @@ class Form
 				
 				switch($_type) {
 
-					case self::HIDDEN_TYPE:
+					case self::TYPE_HIDDEN:
 						echo $form->hidden(
 							$_key, 
 							$value
 						).EOL;
 						break;
 
-					case self::TEXT_TYPE:
+					case self::TYPE_TEXT:
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo $form->input($_key, $value, 'text', 
 								array_merge(
@@ -101,7 +101,7 @@ class Form
 						echo '</div>'.EOL;
 						break;
 
-					case self::PASSWORD_TYPE:
+					case self::TYPE_PASSWORD:
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo $form->input($_key, $value, 'password', 
 								array_merge(
@@ -117,7 +117,7 @@ class Form
 						echo '</div>'.EOL;
 						break;
 
-					case self::TEXTAREA_TYPE:
+					case self::TYPE_TEXTAREA:
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo $form->textarea($_key, $value, 
 								array_merge(
@@ -134,7 +134,7 @@ class Form
 						echo '</div>'.EOL;
 						break;
 
-					case self::CHECKBOX_TYPE:
+					case self::TYPE_CHECKBOX:
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo $form->checkbox($_key, $_checked, $value,  
 								array_merge(
@@ -149,7 +149,7 @@ class Form
 						echo '</div>'.EOL;
 						break;
 
-					case self::SELECT_TYPE:
+					case self::TYPE_SELECT:
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo $form->select($_key, $_options, $value, 
 								array_merge(
@@ -164,7 +164,7 @@ class Form
 						echo '</div>'.EOL;
 						break;
 
-					case self::FILE_TYPE:
+					case self::TYPE_FILE:
 						//@TODO
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo $form->file($_key, 
@@ -179,7 +179,7 @@ class Form
 						echo '</div>'.EOL;
 						break;
 
-					case self::DATE_TYPE:
+					case self::TYPE_DATE:
 						//@TODO
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo $form->input($_key, ($value == null ? null : date('d/m/Y', strtotime($value))), 'text', 

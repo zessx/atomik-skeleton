@@ -2,23 +2,23 @@
 
 $fields = array(
     'id_client' => array(
-        'type'      => Form::HIDDEN_TYPE,
+        'type'      => Form::TYPE_HIDDEN,
         'required'  => true
     ),
     'raison_sociale' => array(
         'label'     => 'Raison sociale',
         'required'  => true,
-        'weight'    => Form::HEAVY_WEIGHT,
+        'weight'    => Form::WEIGHT_HEAVY,
         'filter'    => FILTER_SANITIZE_STRING,
     ),
     'nom' => array(
         'label'     => 'Nom',
-        'size'      => Form::HALF_SIZE,
+        'size'      => Form::SIZE_HALF,
         'filter'    => FILTER_SANITIZE_STRING,
     ),
     'prenom' => array(
         'label'     => 'Prénom',
-        'size'      => Form::HALF_SIZE,
+        'size'      => Form::SIZE_HALF,
         'filter'    => FILTER_SANITIZE_STRING,
     ),
     'adresse' => array(
@@ -27,33 +27,33 @@ $fields = array(
     ),
     'code_postal' => array(
         'label'     => 'Code postal',
-        'size'      => Form::HALF_SIZE,
+        'size'      => Form::SIZE_HALF,
         'filter'    => FILTER_SANITIZE_STRING,
     ),
     'ville' => array(
         'label'     => 'Ville',
-        'size'      => Form::HALF_SIZE,
+        'size'      => Form::SIZE_HALF,
         'filter'    => FILTER_SANITIZE_STRING,
     ),
     'telephone' => array(
         'label'     => 'Téléphone',
-        'size'      => Form::HALF_SIZE,
+        'size'      => Form::SIZE_HALF,
         'filter'    => FILTER_SANITIZE_STRING,
     ),
     'mobile' => array(
         'label'     => 'Mobile',
-        'size'      => Form::HALF_SIZE,
+        'size'      => Form::SIZE_HALF,
         'filter'    => FILTER_SANITIZE_STRING,
     ),
     'fax' => array(
         'label'     => 'Fax',
-        'size'      => Form::HALF_SIZE,
+        'size'      => Form::SIZE_HALF,
         'filter'    => FILTER_SANITIZE_STRING,
     ),
     'email' => array(
         'required' => true,
         'label'     => 'Email',
-        'size'      => Form::HALF_SIZE,
+        'size'      => Form::SIZE_HALF,
         'filter'    => FILTER_VALIDATE_EMAIL,
     ),
 );

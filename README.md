@@ -59,7 +59,7 @@ $fields = array(
     'nom' => array(
         'label'     => 'Nom',
         'required'  => true,
-        'weight'    => Form::HEAVY_WEIGHT,
+        'weight'    => Form::WEIGHT_HEAVY,
         'filter'    => FILTER_SANITIZE_STRING,
     ),
     'role' => array(
@@ -70,13 +70,13 @@ $fields = array(
     ),
     'telephone' => array(
         'label'     => 'Téléphone',
-        'size'	   	=> Form::HALF_SIZE,
+        'size'	   	=> Form::SIZE_HALF,
         'filter'    => FILTER_SANITIZE_STRING,
     ),
     'email' => array(
         'required'  => true,
       	'label'     => 'Email',
-        'size'	    => Form::HALF_SIZE,
+        'size'	    => Form::SIZE_HALF,
         'filter'    => FILTER_VALIDATE_EMAIL,
     )
 );
