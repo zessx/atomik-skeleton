@@ -13,7 +13,7 @@ class Form
 	const TYPE_FILE			= 'file';
 	const TYPE_DATE			= 'date';
 
-	const REGEX_DATE		= '/^\d{2}\/\d{2}\/\d{4}$/';
+	const REGEX_DATE		= '/^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[012])\/d{4}$/';
 
 	const WEIGHT_LIGHT 		= '-sm';
 	const WEIGHT_MEDIUM 	= '-md';
