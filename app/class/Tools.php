@@ -8,7 +8,7 @@ class Tools
 		Atomik::get('db')->insert('logs', array(
 			'date' 				=> date('Y-m-d H:i:s'),
 			'utilisateur'		=> Atomik::get('session.user.name'),
-			'id_utilisateur'	=> Atomik::get('session.user.id'),
+			'id_utilisateur' 	=> Atomik::get('session.user.id'),
 			'objet'		 		=> $object,
 			'id_objet'			=> $id,
 			'action' 			=> $action,
@@ -40,5 +40,5 @@ class Tools
 		if($lastdays > 10) return 'warning';
 		return 'danger';
 	}
-
+	
 }

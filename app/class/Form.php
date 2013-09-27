@@ -13,7 +13,7 @@ class Form
 	const TYPE_FILE			= 'file';
 	const TYPE_DATE			= 'date';
 
-	const REGEX_DATE		= '/^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[012])\/d{4}$/';
+	const REGEX_DATE		= '/^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[012])\/(?:19|20|21)\d{2}$/';
 
 	const WEIGHT_LIGHT 		= '-sm';
 	const WEIGHT_MEDIUM 	= '-md';
@@ -184,7 +184,7 @@ class Form
 					case self::TYPE_DATE:
 						//@TODO
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->input($_key, ($value == null ? null : date('d/m/Y', strtotime($value))), 'text', 
+							echo $form->input($_key, ($value == null ? null : DateFormat::toHTML($value)), 'text', 
 								array_merge(
 									($_disabled ? array('disabled' => '') : array()), 
 									array(
