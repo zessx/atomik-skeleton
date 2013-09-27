@@ -12,6 +12,7 @@ class Form
 	const TYPE_SELECT		= 'select';
 	const TYPE_FILE			= 'file';
 	const TYPE_DATE			= 'date';
+	const TYPE_HOUR			= 'hour';
 
 	const REGEX_DATE		= '/^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[012])\/(?:19|20|21)\d{2}$/';
 
@@ -182,18 +183,41 @@ class Form
 						break;
 
 					case self::TYPE_DATE:
-						//@TODO
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->input($_key, ($value == null ? null : DateFormat::toHTML($value)), 'text', 
-								array_merge(
-									($_disabled ? array('disabled' => '') : array()), 
-									array(
-										'class' 		=> 'form-control datepicker input'.$_weight,
-										'placeholder' 	=> $_label,
-										'title' 		=> $title_input,
+							echo '<div class="datepicker input-group">'.EOL;
+								echo $form->input($_key, ($value == null ? null : DateFormat::toHTML($value)), 'text', 
+									array_merge(
+										($_disabled ? array('disabled' => '') : array()), 
+										array(
+											'class' 		=> 'form-control input'.$_weight,
+											'placeholder' 	=> $_label,
+											'title' 		=> $title_input,
+											'data-format' 	=> 'dd/MM/yyyy"'
+										)
 									)
-								)
-							).EOL;
+								).EOL;
+								echo '<span class="input-group-addon"><i></i></span>'.EOL;
+							echo '</div>'.EOL;
+							echo $_help;
+						echo '</div>'.EOL;
+						break;
+
+					case self::TYPE_HOUR:
+						echo '<div class="'.$class_wrap.'">'.EOL;
+							echo '<div class="timepicker input-group">'.EOL;
+								echo $form->input($_key, ($value == null ? null : DateFormat::alter($value, 'H:i:s', 'H:i')), 'text', 
+									array_merge(
+										($_disabled ? array('disabled' => '') : array()), 
+										array(
+											'class' 		=> 'form-control input'.$_weight,
+											'placeholder' 	=> $_label,
+											'title' 		=> $title_input,
+											'data-format' 	=> 'hh:mm"'
+										)
+									)
+								).EOL;
+								echo '<span class="input-group-addon"><i></i></span>'.EOL;
+							echo '</div>'.EOL;
 							echo $_help;
 						echo '</div>'.EOL;
 						break;

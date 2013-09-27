@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+
 	/*
 	* Left nav
 	*/
@@ -71,29 +71,33 @@ $(document).ready(function(){
 	/*
 	* Datepickers
 	*/
-    $(".datepicker").datepicker({
-    	format: 'dd/mm/yyyy',
-    	language: 'fr'
+	$('.datepicker').datetimepicker({
+      	pickTime: false,
+      	language: 'fr',
+    });
+	$('.timepicker').datetimepicker({
+      	pickDate: false,
+      	language: 'fr',
     });
 
-    /*
-    * Enable tabs direct links
-    */
-    if(hash = document.location.hash) {
-    	$('.nav-tabs a[href="'+hash.replace("#", "#tab_")+'"]').tab('show');
-    } 
-    $('.nav-tabs').click('a', function(ev) {
-    	window.location.hash = ev.target.hash.replace("#tab_", "#");
-    })
+	/*
+	* Enable tabs direct links
+	*/
+	if(hash = document.location.hash) {
+		$('.nav-tabs a[href="'+hash.replace("#", "#tab_")+'"]').tab('show');
+	} 
+	$('.nav-tabs').click('a', function(ev) {
+		window.location.hash = ev.target.hash.replace("#tab_", "#");
+	})
 
-    /*
+	/*
 	* Show password
 	*/
-    $('input:password')
-    	.on('focusin', function(ev) { $(this).attr('type', 'text'); })
-    	.on('focusout', function(ev) { $(this).attr('type', 'password'); });
+	$('input:password')
+		.on('focusin', function(ev) { $(this).attr('type', 'text'); })
+		.on('focusout', function(ev) { $(this).attr('type', 'password'); });
 
-    /*
+	/*
 	* Force form submit when a flash message is confirmed
 	*/
 	$('.btn-force-submit').click(function(e) {
@@ -103,4 +107,16 @@ $(document).ready(function(){
 			form.append('<input type="hidden" name="force-submit" value="1">').submit();
 		}
 	});
+
 });
+
+;(function($){
+	$.fn.datetimepicker.dates['fr'] = {
+		days: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+		daysShort: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
+		daysMin: ["D", "L", "Ma", "Me", "J", "V", "S", "D"],
+		months: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+		monthsShort: ["Jan", "Fev", "Mar", "Avr", "Mai", "Jui", "Jul", "Aou", "Sep", "Oct", "Nov", "Dec"],
+		today: "Aujourd'hui"
+	};
+}(jQuery));
