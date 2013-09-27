@@ -15,6 +15,7 @@ class Form
 	const TYPE_HOUR			= 'hour';
 
 	const REGEX_DATE		= '/^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[012])\/(?:19|20|21)\d{2}$/';
+	const REGEX_HOUR		= '/^(?:[01]\d|[2][0123]):[012345]\d$/';
 
 	const WEIGHT_LIGHT 		= '-sm';
 	const WEIGHT_MEDIUM 	= '-md';
