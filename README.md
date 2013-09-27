@@ -37,6 +37,15 @@ Utilisation
 
 Contient des fonctions utilitaires
 
+***DateFormat.php***
+
+Formate les dates pour l'affichage ou le stockage :
+```
+DateFormat::alter('14 July 2013', 'd F Y', 'Y, M dS');
+DateFormat::toSQL('14/07/2013'); 
+DateFormat::toHTML('2013-07-14 12:30:00'); 
+```
+
 ***Form.php***
 
 Permet de générer des champs avec les classes de Bootstrap 3 : <br>
