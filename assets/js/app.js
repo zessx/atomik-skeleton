@@ -14,29 +14,44 @@ $(document).ready(function(){
 	/*
 	* Enhanced data tables
 	*/
-	$('.table-enhanced').each(function(){
-		var options = {
-			"sDom": "<'row'<'col-md-2 col-sm-6 col-xs-12'l><'col-md-4 hidden-sm hidden-xs'i><'col-md-3 hidden-xs'f><'col-md-3 hidden-sm hidden-xs'p>>t<'row'<'col-md-2 hidden-sm hidden-xs'l><'col-md-4 hidden-sm hidden-xs'i><'col-md-3  hidden-sm hidden-xs'f><'col-md-3 col-sm-12'p>>",
-			"sPaginationType": "bootstrap",
-			"bStateSave": true,
-			"iDisplayLength": 25,
-			"oLanguage": {
-				"sLengthMenu": "_MENU_ par page",
-				"sZeroRecords": "Aucun résultat disponible",
-				"sSearch": "Filter ",
-				"sProcessing": "Traitement ...",
-				"sLoadingRecords": "Chargement ...",
-				"sInfoFiltered": " - Filtré à partir _MAX_ résultats",
-				"sInfoEmpty": "Aucun résultat disponible",
-				"sInfo": "_START_ à _END_ sur _TOTAL_ résultats",
-				"sEmptyTable": "Aucun résultat disponible"
+	$('.table').each(function(){
+
+		var domtop = '';
+		var dombottom = '';
+
+		if($(this).is('.table-paginable')) {
+			var filter = $(this).is('.table-filtrable') ? 'f' : '';
+			domtop = "<'row'<'col-md-2 col-sm-6 col-xs-12'l><'col-md-4 hidden-sm hidden-xs'i><'col-md-3 col-sm-6 hidden-xs'"+filter+"><'col-md-3 hidden-sm hidden-xs'p>>";
+			dombottom = "<'row'<'col-md-2 hidden-sm hidden-xs'l><'col-md-4 hidden-sm hidden-xs'i><'col-md-3 hidden-sm hidden-xs'"+filter+"><'col-md-3 col-sm-12'p>>";
+		} else {
+			if($(this).is('.table-filtrable')) {
+				domtop = "<'row'<'col-md-9 col-sm-6 hidden-xs'><'col-md-3 col-sm-6 col-xs-12'f>>";
+				dombottom = "<'row'<'col-md-9 col-sm-6 hidden-xs'><'col-md-3 col-sm-6 hidden-xs'f>>";
 			}
 		}
 
-		/*
-		* If a custom sort column is set
-		* eg. <table class="table table-enhanced" data-sort-cols="2,0" data-sort-dirs="desc,asc">
-		*/
+		var options = {
+			'sDom': domtop+'t'+dombottom,
+			'sPaginationType': 'bootstrap',
+			'bStateSave': true,
+			'aoColumnDefs': [{ 
+		        'bSortable': $(this).is('.table-sortable'),
+		        "aTargets": ['_all']
+		    }],
+			'iDisplayLength': $(this).data('display-length') ? $(this).data('display-length') : 25,
+			'oLanguage': {
+				'sLengthMenu': '_MENU_ par page',
+				'sZeroRecords': 'Aucun résultat disponible',
+				'sSearch': 'Filter ',
+				'sProcessing': 'Traitement ...',
+				'sLoadingRecords': 'Chargement ...',
+				'sInfoFiltered': ' - Filtré à partir _MAX_ résultats',
+				'sInfoEmpty': 'Aucun résultat disponible',
+				'sInfo': '_START_ à _END_ sur _TOTAL_ résultats',
+				'sEmptyTable': 'Aucun résultat disponible'
+			}
+		}
+
 		var sortColumns = [0];
 		var sortDirections = ['asc'];
 		if($(this).data('sort-cols')) 
@@ -50,6 +65,7 @@ $(document).ready(function(){
 			sort.push([$.trim(sortColumns[i]), (sortDirections[i] ? $.trim(sortDirections[i]) : 'asc')]);
 		}
 		options["aaSorting"] = sort;
+
 		var table = $(this).dataTable(options);
 	});
 	$('.dataTables_wrapper').find('input, select').addClass('form-control input-sm');
