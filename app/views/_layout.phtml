@@ -2,11 +2,10 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title><?= $title ?> - Loccapi</title>
+		<title><?= $title ?> - Atomik</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<link href="<?php echo $this->asset('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
-		<link href="<?php echo $this->asset('assets/css/plugins/bootstrap-datetimepicker.min.css') ?>" rel="stylesheet">
 		<link href="<?php echo $this->asset('assets/css/app.css') ?>" rel="stylesheet">
 
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -28,7 +27,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>	
-					<a class="navbar-brand" href="<?= ROOT ?>"><span class="glyphicon glyphicon-record"></span> Loccapi</a>
+					<a class="navbar-brand" href="<?= ROOT ?>"><span class="glyphicon glyphicon-record"></span> Atomik</a>
 				</div>
 
 				<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
@@ -50,34 +49,8 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Clients <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="<?= ROOT ?>clients">Clients</a></li>
-								<li><a href="<?= ROOT ?>etablissements">Établissements</a></li>
-								<li><a href="<?= ROOT ?>emplacements">Emplacements</a></li>
 							</ul>
 						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Machines <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="<?= ROOT ?>machines">Machines</a></li>
-								<li><a href="<?= ROOT ?>machines/types">Types de machines</a></li>
-								<li><a href="<?= ROOT ?>fabricants">Fabricants</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Interventions <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="<?= ROOT ?>interventions">Interventions</a></li>
-								<li><a href="<?= ROOT ?>articles">Articles</a></li>
-								<li><a href="<?= ROOT ?>alertes">Alertes</a></li>
-							</ul>
-						</li>
-						<?php if(ROLE_ADMIN) { ?>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="<?= ROOT ?>utilisateurs">Utilisateurs</a></li>
-							</ul>
-						</li>
-						<?php } ?>
 						<li class="visible-xs"><a href="<?= ROOT ?>utilisateurs/mon-compte">Mon compte</a></li>
 						<li class="visible-xs"><a href="<?= ROOT ?>deconnexion">Déconnexion</a></li>
 					</ul>
@@ -92,27 +65,17 @@
 				<div class="col-md-3 visible-lg">
 					<div class="sidenav" role="complementary" data-spy="affix">
 						<ul class="nav bs-sidenav">
-							<li><h4><span class="glyphicon glyphicon-earphone"></span> Clients</h4></li>
+							
+							<li><h4><span class="glyphicon glyphicon-earphone"></span> Gestion des clients</h4></li>
 							<li><a <?= Atomik::uriMatch('/clients*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>clients">Clients</a></li>
-							<li><a <?= Atomik::uriMatch('/etablissements*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>etablissements">Établissements</a></li>
-							<li><a <?= Atomik::uriMatch('/emplacements*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>emplacements">Emplacements</a></li>
-
-							<li><h4><span class="glyphicon glyphicon-cog"></span> Machines</h4></li>
-							<li><a <?= Atomik::uriMatch('/machines(?!\/types)*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>machines">Machines</a></li>
-							<li><a <?= Atomik::uriMatch('/machines\/types*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>machines/types">Types de machines</a></li>
-							<li><a <?= Atomik::uriMatch('/fabricants*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>fabricants">Fabricants</a></li>
-
-							<li><h4><span class="glyphicon glyphicon-wrench"></span> Interventions</h4></li>
-							<li><a <?= Atomik::uriMatch('/interventions*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>interventions">Interventions</a></li>
-							<li><a <?= Atomik::uriMatch('/articles*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>articles">Articles</a></li>
-							<li><a class="<?= Atomik::uriMatch('/alertes*/') ? 'active' : '' ?><?= NB_ALERTES > 0 ? ' text-danger ' : '' ?>" href="<?= ROOT ?>articles">Alertes<?= NB_ALERTES > 0 ? '  <span class="label label-danger">'.NB_ALERTES.'</span>' : '' ?></a></li>
 
 							<?php if(ROLE_ADMIN) { ?>
 							<li><h4><span class="glyphicon glyphicon-stats"></span> Administration</h4></li>
 							<li><a <?= Atomik::uriMatch('/utilisateurs(?!/mon-compte)*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>utilisateurs">Utilisateurs</a></li>
+							<li><a <?= Atomik::uriMatch('/statistiques*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>statistiques">Statistiques</a></li>
 							<?php } ?>
 
-							<li><h4><span class="glyphicon glyphicon-user"></span> Mon compte</h4></li>
+							<li><h4><span class="glyphicon glyphicon-user"></span> Gestion de l'extranet</h4></li>
 							<li><a <?= Atomik::uriMatch('/utilisateurs/mon-compte*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>utilisateurs/mon-compte">Mon compte</a></li>
 							<li><a href="<?= ROOT ?>deconnexion">Déconnexion</a></li>
 						</ul>
@@ -123,6 +86,7 @@
 					<div class="page-header">
 						<h1><?php echo $title ?> <small><?php echo $subtitle ?></small></h1>
 					</div>
+
 					<?php if (count($this['flash_messages'])): ?>
 						<?php foreach ($this['flash_messages'] as $label => $messages): ?>
 							<?php foreach ($messages as $message): ?>
@@ -143,7 +107,7 @@
 		</section>
 		<footer>
 			<div class="container">
-				<p>&copy; <?php echo date('Y') ?>, Loccapi - <small>Conception & Réalisation : <a href="http://www.alancia.fr" class="external">Alancia</a></small></p>
+				<p>&copy; <?php echo date('Y') ?>, Atomik - <small>Conception & Réalisation : <a href="http://zes.sx" class="external">@zessx</a></small></p>
 			</div>
 		</footer>
 
@@ -152,7 +116,7 @@
 		<script src="<?php echo $this->asset('assets/js/jquery-1.9.1.min.js') ?>"></script>
 		<script src="<?php echo $this->asset('assets/js/bootstrap.min.js') ?>"></script>
 		<script src="<?php echo $this->asset('assets/js/plugins/jquery.datatables.js') ?>"></script>
-		<script src="<?php echo $this->asset('assets/js/plugins/bootstrap-datetimepicker.js') ?>"></script>
+		<script src="<?php echo $this->asset('assets/js/plugins/bootstrap.datepicker.js') ?>"></script>
 		<script src="<?php echo $this->asset('assets/js/plugins/bootstrap.typeahead.js') ?>"></script>
 		<script src="<?php echo $this->asset('assets/js/plugins/DT_bootstrap.js') ?>"></script>
 		<script src="<?php echo $this->asset('assets/js/app.js') ?>"></script>
