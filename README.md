@@ -33,22 +33,26 @@ Exécuté après l'appel des vues
 
 Utilisation
 -----------
-***Tools.php***
+***Formatage des dates***
 
-Contient des fonctions utilitaires
+`DateFormat` fournit des fonctions pour formater les dates pour l'affichage ou le stockage :
+- `toSQL($date, $before = 'd/m/Y')`		: formate la date pour un stockage en base de donnée
+- `toHTML($date, $before = 'Y-m-d H:i:s')`	: formate la date pour un affichage en front (format européen d/m/Y)
+- `alter($date, $before, $after)`		: permet de passe d'un format choisi à un autre
 
-***DateFormat.php***
-
-Formate les dates pour l'affichage ou le stockage :
+Exemple d'utilisation :
 ```
 DateFormat::alter('14 July 2013', 'd F Y', 'Y, M dS');
+// output : 2013, Jul 14th
 DateFormat::toSQL('14/07/2013'); 
+// output : 2013-07-14 00:00:00
 DateFormat::toHTML('2013-07-14 12:30:00'); 
+// output : 14/07/2013
 ```
 
-***Form.php***
+***Génération de formulaire***
 
-Permet de générer des champs avec les classes de Bootstrap 3 : <br>
+`Form` fournit des fonction permettant de générer des champs avec les classes de Bootstrap 3 : <br>
 Pour chaque champ, des options sont fixées :<br>
 - `type`     : type du champ (hidden, text, textarea, checkbox, select, file, date, password)
 - `size`     : largeur du champ (pour des formulaires sur 1 ou 2 colonnes)
@@ -103,4 +107,43 @@ $fields = array(
 		</div>
 	</div>
 </form>
+```
+
+***Affichage de tables de données***
+
+Le plugin `datatables.js` permet l'affichage de tables de données avancées.<br>
+Certaines classes ont été ajoutées aux classes de base pour faciliter la mise en place de ces tables :
+- `table`		: classe de base, pour l'initialisation de la datatable (obligatoire)
+- `table-hover`		: coloration au passage de la souris sur une ligne (recommandé)
+- `table-condensed`	: la hauteur des lignes est réduite (recommandé)
+- `table-bordered`	: les cellules sont délimitées par des bordures (recommandé)
+- `table-striped`	: la couleur de fond des lignes est alternée (recommandé)
+- `table-sortable`	: autorise le clic sur les en-tête pour trier les colonnes
+- `table-persistent`	: permet la persistence de l'état de la table
+- `table-filtrable`	: ajoute un champ pour filtrer les résultats
+- `table-paginable`	: ajoute une pagination
+
+Ainsi que quelques options :
+- `data-sort-cols`  	: colonnes utilisées pour le tri (requiert la classe `table-sortable`)
+- `data-sort-dirs`     	: sens utilisés pour le tri des colonnes définies dans l'option `data-sort-cols`
+- `data-display-length`	: nombre de ligne à afficher (25 par défaut)
+
+Exemple d'utilisation :
+```
+<table class="table table-hover table-condensed table-bordered table-striped 
+				table-filtrable table-paginable table-sortable table-persistent" 
+	data-sort-cols="0,2" 
+	data-sort-dirs="asc,desc" 
+	data-display-length="10">
+	<thead>
+		<tr>
+			<th>Column header</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Column value</td>
+		</tr>
+	</tbody>
+</table>
 ```
