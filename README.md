@@ -125,8 +125,9 @@ Certaines classes ont été ajoutées aux classes de base pour faciliter la mise
 
 Ainsi que quelques options :
 - `data-sort-cols`  	: colonnes utilisées pour le tri (requiert la classe `table-sortable`)
-- `data-sort-dirs`     	: sens utilisés pour le tri des colonnes définies dans l'option `data-sort-cols`
-- `data-display-length`	: nombre de ligne à afficher (25 par défaut)
+- `data-sort-dirs`     	: sens utilisés pour le tri des colonnes définies dans l'option `data-sort-cols` (asc|desc)
+- `data-display-length` : nombre de ligne à afficher (25 par défaut)
+- `data-hide-controls`	: permet de cacher les contrôle au-dessus ou au-dessous de la table (top|bottom) 
 
 Exemple d'utilisation :
 ```
@@ -134,7 +135,8 @@ Exemple d'utilisation :
 				table-filtrable table-paginable table-sortable table-persistent" 
 	data-sort-cols="0,2" 
 	data-sort-dirs="asc,desc" 
-	data-display-length="10">
+	data-display-length="10"
+    data-hide-controls="top">
 	<thead>
 		<tr>
 			<th>Column header</th>

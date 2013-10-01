@@ -21,19 +21,24 @@ $(document).ready(function(){
 
 		if($(this).is('.table-paginable')) {
 			var filter = $(this).is('.table-filtrable') ? 'f' : '';
-			domtop = "<'row'<'col-md-2 col-sm-6 col-xs-12'l><'col-md-4 hidden-sm hidden-xs'i><'col-md-3 col-sm-6 hidden-xs'"+filter+"><'col-md-3 hidden-sm hidden-xs'p>>";
-			dombottom = "<'row'<'col-md-2 hidden-sm hidden-xs'l><'col-md-4 hidden-sm hidden-xs'i><'col-md-3 hidden-sm hidden-xs'"+filter+"><'col-md-3 col-sm-12'p>>";
+			domtop = "<'row'<'col-md-2 col-sm-6 col-xs-12'l><'col-md-3 hidden-sm hidden-xs'i><'col-md-3 col-sm-6 hidden-xs'"+filter+"><'col-md-4 hidden-sm hidden-xs'p>>";
+			dombottom = "<'row'<'col-md-2 hidden-sm hidden-xs'l><'col-md-3 hidden-sm hidden-xs'i><'col-md-3 hidden-sm hidden-xs'"+filter+"><'col-md-4 col-sm-12'p>>";
 		} else {
 			if($(this).is('.table-filtrable')) {
 				domtop = "<'row'<'col-md-9 col-sm-6 hidden-xs'><'col-md-3 col-sm-6 col-xs-12'f>>";
 				dombottom = "<'row'<'col-md-9 col-sm-6 hidden-xs'><'col-md-3 col-sm-6 hidden-xs'f>>";
 			}
 		}
+		var dom = 't';
+		if(!($(this).data('hide-controls') == 'top')) 
+			dom = domtop + dom;
+		if(!($(this).data('hide-controls') == 'bottom')) 
+			dom = dom + dombottom;
 
 		var options = {
-			'sDom': domtop+'t'+dombottom,
+			'sDom': dom,
 			'sPaginationType': 'bootstrap',
-			'bStateSave': true,
+			'bStateSave': $(this).is('.table-persistent'),
 			'aoColumnDefs': [{ 
 				'bSortable': $(this).is('.table-sortable'),
 				"aTargets": ['_all']
@@ -47,7 +52,7 @@ $(document).ready(function(){
 				'sLoadingRecords': 'Chargement ...',
 				'sInfoFiltered': ' - Filtré à partir _MAX_ résultats',
 				'sInfoEmpty': 'Aucun résultat disponible',
-				'sInfo': '_START_ à _END_ sur _TOTAL_ résultats',
+				'sInfo': '&nbsp;(_START_~_END_ / _TOTAL_)',
 				'sEmptyTable': 'Aucun résultat disponible'
 			}
 		}
