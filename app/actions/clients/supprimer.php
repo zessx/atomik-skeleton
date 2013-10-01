@@ -2,8 +2,8 @@
 
 if (!isset($this['request.id'])) {
 
-    $this->flash('Le paramètre [id] est manquant.', 'danger');
-    
+	$this->flash('Le paramètre [id] est manquant.', 'danger');
+	
 } else {
 
 	if($this['db']->delete('clients', array('id_client' => $this['request.id']))) {

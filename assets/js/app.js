@@ -35,9 +35,9 @@ $(document).ready(function(){
 			'sPaginationType': 'bootstrap',
 			'bStateSave': true,
 			'aoColumnDefs': [{ 
-		        'bSortable': $(this).is('.table-sortable'),
-		        "aTargets": ['_all']
-		    }],
+				'bSortable': $(this).is('.table-sortable'),
+				"aTargets": ['_all']
+			}],
 			'iDisplayLength': $(this).data('display-length') ? $(this).data('display-length') : 25,
 			'oLanguage': {
 				'sLengthMenu': '_MENU_ par page',
@@ -88,13 +88,13 @@ $(document).ready(function(){
 	* Datepickers
 	*/
 	$('.datepicker').datetimepicker({
-      	pickTime: false,
-      	language: 'fr',
-    });
+		pickTime: false,
+		language: 'fr',
+	});
 	$('.timepicker').datetimepicker({
-      	pickDate: false,
-      	language: 'fr',
-    });
+		pickDate: false,
+		language: 'fr',
+	});
 
 	/*
 	* Enable tabs direct links
