@@ -39,21 +39,21 @@ Atomik::set(array(
 		'language' => 'fr',
 		'routes' => array(
 
-			'404' 								=> array('action' => '404'),
+			'404' 					=> array('action' => '404'),
 
-			'connexion' 						=> array('action' => 'utilisateurs/connexion'),
-			'deconnexion' 						=> array('action' => 'utilisateurs/deconnexion'),
+			'connexion' 				=> array('action' => 'utilisateurs/connexion'),
+			'deconnexion' 				=> array('action' => 'utilisateurs/deconnexion'),
 
-			'utilisateurs'						=> array('action' => 'utilisateurs/index'),
-			'utilisateurs/ajouter'				=> array('action' => 'utilisateurs/ajouter'),
+			'utilisateurs'				=> array('action' => 'utilisateurs/index'),
+			'utilisateurs/ajouter'			=> array('action' => 'utilisateurs/ajouter'),
 			'utilisateurs/modifier/:id' 		=> array('action' => 'utilisateurs/modifier'),
 			'utilisateurs/supprimer/:id' 		=> array('action' => 'utilisateurs/supprimer'),
-			'utilisateurs/mon-compte' 			=> array('action' => 'utilisateurs/mon-compte'),
+			'utilisateurs/mon-compte' 		=> array('action' => 'utilisateurs/mon-compte'),
 
-			'clients'							=> array('action' => 'clients/index'),
-			'clients/ajouter'					=> array('action' => 'clients/ajouter'),
-			'clients/modifier/:id' 				=> array('action' => 'clients/modifier'),
-			'clients/supprimer/:id' 			=> array('action' => 'clients/supprimer'),
+			'clients'				=> array('action' => 'clients/index'),
+			'clients/ajouter'			=> array('action' => 'clients/ajouter'),
+			'clients/modifier/:id' 			=> array('action' => 'clients/modifier'),
+			'clients/supprimer/:id' 		=> array('action' => 'clients/supprimer'),
 
 		)
 	),
