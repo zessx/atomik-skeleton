@@ -8,7 +8,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($utilisateurs as $utilisateur): ?>
+		<?php if($utilisateurs): foreach ($utilisateurs as $utilisateur): ?>
 		<tr>
 			<td><a href="<?= ROOT.'utilisateurs/modifier/'.$utilisateur['id_utilisateur'] ?>"><?= $this->escape($utilisateur['nom']) ?></a></td>
 			<td><?= $this->escape($utilisateur['prenom']) ?></td>
@@ -20,6 +20,6 @@
 				</div>
 			</td>
 		</tr>
-		<?php endforeach; ?>
+		<?php endforeach; endif; ?>
 	</tbody>
 </table>

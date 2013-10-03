@@ -8,7 +8,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($clients as $client): ?>
+		<?php if($clients): foreach ($clients as $client): ?>
 		<tr>
 			<td><?= $this->escape($client['id_client']) ?></td>
 			<td><?= $this->escape($client['nom']) ?></td>
@@ -20,6 +20,6 @@
 				</div>
 			</td>
 		</tr>
-		<?php endforeach; ?>
+		<?php endforeach; endif; ?>
 	</tbody>
 </table>
