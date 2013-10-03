@@ -40,5 +40,16 @@ class Tools
 		if($lastdays > 10) return 'warning';
 		return 'danger';
 	}
+
+	/* Recherche une variable dans les données POST et GET */
+	public static function requestParam($name, $type = 'both') {
+		if($type == 'post' || $type == 'both')
+			if(isset($_POST[$name]))
+				return $_POST[$name];
+		if($type == 'get' || $type == 'both')
+			if(isset($_GET[$name]))
+				return $_GET[$name];
+		return null;
+	}
 	
 }
