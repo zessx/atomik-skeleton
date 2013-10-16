@@ -63,7 +63,7 @@ Pour chaque champ, des options sont fixées :<br>
 - `options`     : pour le type "select", ou le type "text" avec un typeahead
 - `checked`     : pour le type "checkbox"
 - `extensions`  : pour le type "file", définit les extensions autorisées
-- `thumbnail`   : pour le type "file", permet d'afficher ue fichier avec fancybox
+- `thumbnail`   : pour le type "file", permet d'afficher un fichier avec fancybox
 - `help`        : texte d'aide placé sous le champ
 - `id`          : précise l'idntifiant du `form-group`
 - `classes`     : précise les classes du `form-group`
