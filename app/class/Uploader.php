@@ -244,8 +244,12 @@ class Uploader
 		$_mt = array();
 		foreach ($extensions as $extension) {
 			if(array_key_exists($extension, $mt)) {
-				foreach ($mt[$extension] as $m) {
-					array_push($_mt, $m);
+				if(is_string($mt[$extension])) {
+					array_push($_mt, $mt[$extension]);
+				} else {
+					foreach ($mt[$extension] as $m) {
+						array_push($_mt, $m);
+					}
 				}
 			}
 		}
