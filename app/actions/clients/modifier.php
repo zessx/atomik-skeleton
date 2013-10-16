@@ -56,6 +56,11 @@ $fields = array(
 		'size'		=> Form::SIZE_HALF,
 		'filter'	=> FILTER_VALIDATE_EMAIL,
 	),
+	'logo' => array(
+		'label' 		=> 'Logo',
+		'type'			=> Form::TYPE_FILE,
+		'extensions'	=> array('jpg', 'gif', 'png'),
+	),
 );
 
 if (!isset($this['request.id'])) {

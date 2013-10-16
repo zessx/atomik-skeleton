@@ -5,7 +5,7 @@
 <div class="tab-content">
 
 	<div class="tab-pane active" id="tab_informations">
-		<?= $form = $this->form(ROOT.'clients/modifier/'.$client['id_client'], null, array('class' => 'form-horizontal')) ?>
+		<?= $form = $this->form(ROOT.'clients/modifier/'.$client['id_client'], null, array('class' => 'form-horizontal', 'enctype' => 'multipart/form-data')) ?>
 		<?= Form::generateFields($form, $fields, $client) ?>
 
 			<hr>

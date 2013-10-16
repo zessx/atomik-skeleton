@@ -175,7 +175,7 @@ class Form
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							if($value) {
 								echo '<a href="'.ROOT.Atomik::get('upload.dir').$value.'" class="btn btn-info btn-sm" target="related_page"><i class="glyphicon glyphicon-save"></i> Télécharger le fichier : '.$value.'</a>'.EOL;
-								echo '<a href="'.ROOT.PAGE.'/supprimer_fichier" class="btn btn-danger btn-sm btn-delete" data-modal-content="Êtes-vous sur de vouloir supprimer le fichier ?"><i class="glyphicon glyphicon-remove"></i> Supprimer le fichier</a>'.EOL;
+								echo '<a href="'.ROOT.PAGE.'/supprimer_fichier/'.$_key.'" class="btn btn-danger btn-sm btn-delete" data-modal-content="Êtes-vous sur de vouloir supprimer le fichier ?"><i class="glyphicon glyphicon-remove"></i> Supprimer le fichier</a>'.EOL;
 								echo $form->hidden(
 									$_key, 
 									$value

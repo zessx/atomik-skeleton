@@ -5,9 +5,23 @@ if (($data = $this->filter($_POST, $fields)) === false) {
 	return;
 }
 
-if($this['db']->update('clients', $data, array('id_client' => $data['id_client']))) {
-	Tools::log('clients', $data['id_client'], 'update');
-	$this->flash('Le client a bien été modifié.', 'success');
-} else {
-	$this->flash('Une erreur est survenue lors de la modification du client.', 'danger');
+$error = false;
+if(!isset($_POST['logo']) && $_FILES['logo']) {
+	$message = Uploader::upload('logo', '', $fields['logo']['extensions']);
+	if(isset($message['success'])) {
+		$data['logo'] = $message['success'];
+	} else {
+		$error = true;
+		$this->flash($message['error'], 'danger');
+	}
+}
+
+if(!$error) {
+	if($this['db']->update('clients', $data, array('id_client' => $data['id_client']))) {
+		Tools::log('clients', $data['id_client'], 'update');
+		$this->flash('Le client a bien été modifié.', 'success');
+		$this->redirect(ROOT.'clients');
+	} else {
+		$this->flash('Une erreur est survenue lors de la modification du client.', 'danger');
+	}
 }
