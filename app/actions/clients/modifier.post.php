@@ -6,7 +6,7 @@ if (($data = $this->filter($_POST, $fields)) === false) {
 }
 
 $error = false;
-if(!isset($_POST['logo']) && $_FILES['logo']) {
+if(!isset($_POST['logo']) && $_FILES['logo'] && $_FILES['logo']['tmp_name']) {
 	$message = Uploader::upload('logo', '', $fields['logo']['extensions']);
 	if(isset($message['success'])) {
 		$data['logo'] = $message['success'];
