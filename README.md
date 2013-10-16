@@ -65,7 +65,7 @@ Pour chaque champ, des options sont fixées :<br>
 - `extensions`  : pour le type "file", définit les extensions autorisées
 - `thumbnail`   : pour le type "file", permet d'afficher un fichier avec fancybox
 - `help`        : texte d'aide placé sous le champ
-- `id`          : précise l'idntifiant du `form-group`
+- `id`          : précise l'identifiant du `form-group`
 - `classes`     : précise les classes du `form-group`
 - `link`        : lien ajouté sur le label 
 
