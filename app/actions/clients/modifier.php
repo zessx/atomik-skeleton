@@ -59,6 +59,7 @@ $fields = array(
 	'logo' => array(
 		'label' 		=> 'Logo',
 		'type'			=> Form::TYPE_FILE,
+		'thumbnail'		=> true,
 		'extensions'	=> array('jpg', 'gif', 'png'),
 	),
 );

@@ -129,6 +129,11 @@ $(document).ready(function(){
 		}
 	});
 
+	/*
+	* Enable fancybox
+	*/
+	$('.fancybox').fancybox();
+	
 });
 
 ;(function($){

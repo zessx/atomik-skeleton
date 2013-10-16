@@ -54,16 +54,20 @@ DateFormat::toHTML('2013-07-14 12:30:00');
 
 `Form` fournit des fonction permettant de générer des champs avec les classes de Bootstrap 3 : <br>
 Pour chaque champ, des options sont fixées :<br>
-- `type`     : type du champ (hidden, text, textarea, checkbox, select, file, date, password)
-- `size`     : largeur du champ (pour des formulaires sur 1 ou 2 colonnes)
-- `weight`   : importance du champ (définit sa hauteur)
-- `label`    : label du champ
-- `required` : le champ est-il requit
-- `disabled` : désactive le champ
-- `options`  : pour le type "select", ou le type "text" avec un typeahead
-- `checked`  : pour le type "checkbox"
-- `help`     : texte d'aide placé sous le champ
-- `link`     : lien ajouté sur le label 
+- `type`        : type du champ (hidden, text, textarea, checkbox, select, file, date, password)
+- `size`        : largeur du champ (pour des formulaires sur 1 ou 2 colonnes)
+- `weight`      : importance du champ (définit sa hauteur)
+- `label`       : label du champ
+- `required`    : le champ est-il requit
+- `disabled`    : désactive le champ
+- `options`     : pour le type "select", ou le type "text" avec un typeahead
+- `checked`     : pour le type "checkbox"
+- `extensions`  : pour le type "file", définit les extensions autorisées
+- `thumbnail`   : pour le type "file", permet d'afficher ue fichier avec fancybox
+- `help`        : texte d'aide placé sous le champ
+- `id`          : précise l'idntifiant du `form-group`
+- `classes`     : précise les classes du `form-group`
+- `link`        : lien ajouté sur le label 
 
 Exemple d'utilisation :
 ```
@@ -91,7 +95,13 @@ $fields = array(
       	'label'     => 'Email',
         'size'	    => Form::SIZE_HALF,
         'filter'    => FILTER_VALIDATE_EMAIL,
-    )
+    ),
+    'logo' => array(
+        'label'         => 'Logo',
+        'type'          => Form::TYPE_FILE,
+        'thumbnail'     => true,
+        'extensions'    => array('jpg', 'gif', 'png'),
+    ),
 );
 ```
 ```
