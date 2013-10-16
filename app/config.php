@@ -34,6 +34,11 @@ Atomik::set(array(
 		)
 	),
 
+	'upload' => array(
+		'dir' => 'upload/',
+		'max_filesize' => 2 * 1024
+	),
+
 	'app' => array(
 		'layout' => '_layout',
 		'language' => 'fr',

@@ -37,16 +37,19 @@ class Form
 			if($object != null && isset($object[$_key]))
 				$value = $object[$_key];
 			
-			$_type 		= isset($field['type']) 	? $field['type'] : self::TYPE_TEXT;
-			$_size 		= isset($field['size']) 	? $field['size'] : self::SIZE_FULL;
-			$_weight 	= isset($field['weight']) 	? $field['weight'] : self::WEIGHT_LIGHT;
-			$_label 	= isset($field['label']) 	? $field['label'] : $_key;
-			$_required 	= isset($field['required']) ? $field['required'] : false;
-			$_disabled 	= isset($field['disabled']) ? $field['disabled'] : false;
-			$_options 	= isset($field['options']) 	? $field['options'] : array();
-			$_checked	= isset($field['checked']) 	? $field['checked'] : (bool)$value;
-			$_help 		= isset($field['help']) 	? '<p class="help-block">'.$field['help'].'</p>'.EOL : '';
-			$_link 		= false;
+			$_type 			= isset($field['type']) 		? $field['type'] : self::TYPE_TEXT;
+			$_size 			= isset($field['size']) 		? $field['size'] : self::SIZE_FULL;
+			$_weight 		= isset($field['weight']) 		? $field['weight'] : self::WEIGHT_LIGHT;
+			$_label 		= isset($field['label']) 		? $field['label'] : $_key;
+			$_required 		= isset($field['required']) 	? $field['required'] : false;
+			$_disabled 		= isset($field['disabled']) 	? $field['disabled'] : false;
+			$_options 		= isset($field['options']) 		? $field['options'] : array();
+			$_checked		= isset($field['checked']) 		? $field['checked'] : (bool)$value;
+			$_extensions	= isset($field['extensions']) 	? $field['extensions'] : array('pdf');
+			$_help 			= isset($field['help']) 		? '<p class="help-block">'.$field['help'].'</p>'.EOL : '';
+			$_id			= isset($field['id']) 			? ' id="'.$field['id'].'" ' : '';
+			$_classes		= isset($field['classes']) 		? ' '.$field['classes'].' ' : '';
+			$_link 			= false;
 
 			if(isset($field['link'])) {
 				$params = array();
@@ -61,7 +64,7 @@ class Form
 			$class_wrap 	= 'field-wrap col-lg-10';
 			$title_input 	= $_required ? 'Ce champ est obligatoire' : '';
 
-			echo '<div class="form-group col-lg'.$_size.($_required ? ' has-error' : '').'">'.EOL;
+			echo '<div '.$_id.' class="form-group col-lg'.$_size.($_required ? ' has-error' : '').$_classes.'">'.EOL;
 				
 				if($_type != self::TYPE_HIDDEN) {
 					if($_link && $value != null) {
@@ -86,13 +89,13 @@ class Form
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo $form->input($_key, $value, 'text', 
 								array_merge(
-									($_disabled ? array('disabled' => '') : array()), 
+									($_disabled ? array('readonly' => '') : array()), 
 									(count($_options) > 0 ? array(
 										'data-provide' => 'typeahead',
 										'data-items' => 8,
 										'data-value' => $value,
 										'data-source' => json_encode(array_values($_options)), 
-										'autocomplete' => 'false',
+										'autocomplete' => 'off',
 									) : array()), 
 									array(
 										'class' 		=> 'form-control input'.$_weight, 
@@ -107,7 +110,7 @@ class Form
 
 					case self::TYPE_PASSWORD:
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->input($_key, $value, 'password', 
+							echo $form->input($_key, $value, 'readonly', 
 								array_merge(
 									($_disabled ? array('disabled' => '') : array()), 
 									array(
@@ -125,7 +128,7 @@ class Form
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo $form->textarea($_key, $value, 
 								array_merge(
-									($_disabled ? array('disabled' => '') : array()), 
+									($_disabled ? array('readonly' => '') : array()), 
 									array(
 										'class' 		=> 'form-control input'.$_weight, 
 										'rows' 			=> '7', 
@@ -142,7 +145,7 @@ class Form
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo $form->checkbox($_key, $_checked, $value,  
 								array_merge(
-									($_disabled ? array('disabled' => '') : array()), 
+									($_disabled ? array('readonly' => '') : array()), 
 									array(
 										'class' 		=> 'input'.$_weight, 
 										'title' 		=> $title_input,
@@ -157,7 +160,7 @@ class Form
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo $form->select($_key, $_options, $value, 
 								array_merge(
-									($_disabled ? array('disabled' => '') : array()), 
+									($_disabled ? array('readonly' => '') : array()), 
 									array(
 										'class' 		=> 'form-control input'.$_weight, 
 										'title' 		=> $title_input,
@@ -169,17 +172,26 @@ class Form
 						break;
 
 					case self::TYPE_FILE:
-						//@TODO
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->file($_key, 
-								array_merge(
-									($_disabled ? array('disabled' => '') : array()), 
-									array(
-										'title' 		=> $title_input,
+							if($value) {
+								echo '<a href="'.ROOT.Atomik::get('upload.dir').$value.'" class="btn btn-info btn-sm" target="related_page"><i class="glyphicon glyphicon-save"></i> Télécharger le fichier : '.$value.'</a>'.EOL;
+								echo '<a href="'.ROOT.PAGE.'/supprimer_fichier" class="btn btn-danger btn-sm btn-delete" data-modal-content="Êtes-vous sur de vouloir supprimer le fichier ?"><i class="glyphicon glyphicon-remove"></i> Supprimer le fichier</a>'.EOL;
+								echo $form->hidden(
+									$_key, 
+									$value
+								).EOL;
+							} else {
+								echo $form->file($_key, 
+									array_merge(
+										($_disabled ? array('readonly' => '') : array()), 
+										array(
+											'title' 		=> $title_input,
+										)
 									)
-								)
-							).EOL;
-							echo $_help;
+								).EOL;
+								echo '<p class="help-block">Le fichier doit être au format '.implode(',', $_extensions).'</p>';
+								echo $_help;
+							}
 						echo '</div>'.EOL;
 						break;
 
@@ -188,7 +200,7 @@ class Form
 							echo '<div class="datepicker input-group">'.EOL;
 								echo $form->input($_key, ($value == null ? null : DateFormat::toHTML($value)), 'text', 
 									array_merge(
-										($_disabled ? array('disabled' => '') : array()), 
+										($_disabled ? array('readonly' => '') : array()), 
 										array(
 											'class' 		=> 'form-control input'.$_weight,
 											'placeholder' 	=> $_label,
@@ -208,7 +220,7 @@ class Form
 							echo '<div class="timepicker input-group">'.EOL;
 								echo $form->input($_key, ($value == null ? null : DateFormat::alter($value, 'H:i:s', 'H:i')), 'text', 
 									array_merge(
-										($_disabled ? array('disabled' => '') : array()), 
+										($_disabled ? array('readonly' => '') : array()), 
 										array(
 											'class' 		=> 'form-control input'.$_weight,
 											'placeholder' 	=> $_label,
