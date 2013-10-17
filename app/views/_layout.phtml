@@ -39,7 +39,8 @@
 								<span class="glyphicon glyphicon-user"></span>
 								<span class="username"> Bienvenue, <?= Atomik::get('session.user.name') ?></span> <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<?= ROOT ?>utilisateurs/mon-compte"><span class="glyphicon glyphicon-pencil"></span> Mon compte</a></li>
+								<li><a href="<?= ROOT ?>utilisateurs/mon-compte"><span class="glyphicon glyphicon-user"></span> Mes informations</a></li>
+								<li><a href="<?= ROOT ?>utilisateurs/mon-compte/mot-de-passe"><span class="glyphicon glyphicon-wrench"></span> Modifier mon mot de passe</a></li>
 								<li><a href="<?= ROOT ?>deconnexion"><span class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
 							</ul>
 						</li>
@@ -52,7 +53,8 @@
 								<li><a href="<?= ROOT ?>clients">Clients</a></li>
 							</ul>
 						</li>
-						<li class="visible-xs"><a href="<?= ROOT ?>utilisateurs/mon-compte">Mon compte</a></li>
+						<li class="visible-xs"><a href="<?= ROOT ?>utilisateurs/mon-compte">Mes informations</a></li>
+						<li class="visible-xs"><a href="<?= ROOT ?>utilisateurs/mon-compte/mot-de-passe">Modifier mon mot de passe</a></li>
 						<li class="visible-xs"><a href="<?= ROOT ?>deconnexion">Déconnexion</a></li>
 					</ul>
 					
@@ -72,12 +74,13 @@
 
 							<?php if(ROLE_ADMIN) { ?>
 							<li><h4><span class="glyphicon glyphicon-stats"></span> Administration</h4></li>
-							<li><a <?= Atomik::uriMatch('/utilisateurs(?!/mon-compte)*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>utilisateurs">Utilisateurs</a></li>
+							<li><a <?= Atomik::uriMatch('/utilisateurs(?!\/mon-compte)*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>utilisateurs">Utilisateurs</a></li>
 							<li><a <?= Atomik::uriMatch('/statistiques*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>statistiques">Statistiques</a></li>
 							<?php } ?>
 
 							<li><h4><span class="glyphicon glyphicon-user"></span> Gestion de l'extranet</h4></li>
-							<li><a <?= Atomik::uriMatch('/utilisateurs/mon-compte*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>utilisateurs/mon-compte">Mon compte</a></li>
+							<li><a <?= Atomik::uriMatch('utilisateurs\/mon-compte(?!\/mot-de-passe)*') ? 'class="active"' : '' ?> href="<?= ROOT ?>utilisateurs/mon-compte">Mes informations</a></li>
+							<li><a <?= Atomik::uriMatch('utilisateurs\/mon-compte\/mot-de-passe*') ? 'class="active"' : '' ?> href="<?= ROOT ?>utilisateurs/mon-compte/mot-de-passe">Modifier mon mot de passe</a></li>
 							<li><a href="<?= ROOT ?>deconnexion">Déconnexion</a></li>
 						</ul>
 					  </div>

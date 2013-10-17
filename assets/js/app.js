@@ -112,13 +112,6 @@ $(document).ready(function(){
 	})
 
 	/*
-	* Show password
-	*/
-	$('input:password')
-		.on('focusin', function(ev) { $(this).attr('type', 'text'); })
-		.on('focusout', function(ev) { $(this).attr('type', 'password'); });
-
-	/*
 	* Force form submit when a flash message is confirmed
 	*/
 	$('.btn-force-submit').click(function(e) {

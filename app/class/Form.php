@@ -111,9 +111,9 @@ class Form
 
 					case self::TYPE_PASSWORD:
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->input($_key, $value, 'readonly', 
+							echo $form->input($_key, $value, 'text', 
 								array_merge(
-									($_disabled ? array('disabled' => '') : array()), 
+									($_disabled ? array('readonly' => '') : array()), 
 									array(
 										'class' 		=> 'form-control input'.$_weight, 
 										'placeholder' 	=> $_label, 

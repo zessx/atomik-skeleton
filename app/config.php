@@ -54,6 +54,7 @@ Atomik::set(array(
 			'utilisateurs/modifier/:id' 					=> array('action' => 'utilisateurs/modifier'),
 			'utilisateurs/supprimer/:id' 					=> array('action' => 'utilisateurs/supprimer'),
 			'utilisateurs/mon-compte' 						=> array('action' => 'utilisateurs/mon-compte'),
+			'utilisateurs/mon-compte/mot-de-passe' 			=> array('action' => 'utilisateurs/modifier-mdp'),
 			
 			'clients'										=> array('action' => 'clients/index'),
 			'clients/ajouter'								=> array('action' => 'clients/ajouter'),
