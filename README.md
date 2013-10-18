@@ -72,13 +72,13 @@ Pour chaque champ, des options sont fixées :<br>
 Types de champs disponibles : <br>
 - `TYPE_HIDDEN`     : champ caché
 - `TYPE_TEXT`       : champ texte
-- `TYPE_PASSWORD`   : champ password (actuellement identique a TYPE_TEXT)
+- `TYPE_PASSWORD`   : champ password (actuellement identique a `TYPE_TEXT`)
 - `TYPE_TEXTAREA`   : zone de texte
 - `TYPE_CHECKBOX`   : case à cocher
 - `TYPE_SELECT`     : liste déroulante
 - `TYPE_FILE`       : bouton d'upload
-- `TYPE_DATE`       : champ avec un sélecteur de date (doit être stocké au format DATE en base de données)
-- `TYPE_HOUR`       : champ avec un sélecteur d'heure (doit être stocké au format TIME en base de données)
+- `TYPE_DATE`       : champ avec un sélecteur de date (doit être stocké au format `DATE` en base de données)
+- `TYPE_HOUR`       : champ avec un sélecteur d'heure (doit être stocké au format `TIME` en base de données)
 
 Exemple d'utilisation :
 ```
