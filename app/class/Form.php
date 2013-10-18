@@ -199,7 +199,7 @@ class Form
 					case self::TYPE_DATE:
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo '<div class="datepicker input-group">'.EOL;
-								echo $form->input($_key, ($value == null ? null : DateFormat::toHTML($value)), 'text', 
+								echo $form->input($_key, ($value == null ? null : DateFormat::toHTML($value, 'Y-m-d')), 'text', 
 									array_merge(
 										($_disabled ? array('readonly' => '') : array()), 
 										array(
