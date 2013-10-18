@@ -54,7 +54,7 @@ DateFormat::toHTML('2013-07-14 12:30:00');
 
 `Form` fournit des fonction permettant de générer des champs avec les classes de Bootstrap 3 : <br>
 Pour chaque champ, des options sont fixées :<br>
-- `type`        : type du champ (hidden, text, textarea, checkbox, select, file, date, password)
+- `type`        : type du champ 
 - `size`        : largeur du champ (pour des formulaires sur 1 ou 2 colonnes)
 - `weight`      : importance du champ (définit sa hauteur)
 - `label`       : label du champ
@@ -68,6 +68,17 @@ Pour chaque champ, des options sont fixées :<br>
 - `id`          : précise l'identifiant du `form-group`
 - `classes`     : précise les classes du `form-group`
 - `link`        : lien ajouté sur le label 
+
+Types de champs disponibles : <br>
+- `TYPE_HIDDEN`     : champ caché
+- `TYPE_TEXT`       : champ texte
+- `TYPE_PASSWORD`   : champ password (actuellement identique a TYPE_TEXT)
+- `TYPE_TEXTAREA`   : zone de texte
+- `TYPE_CHECKBOX`   : case à cocher
+- `TYPE_SELECT`     : liste déroulante
+- `TYPE_FILE`       : bouton d'upload
+- `TYPE_DATE`       : champ avec un sélecteur de date (doit être stocké au format DATE en base de données)
+- `TYPE_HOUR`       : champ avec un sélecteur d'heure (doit être stocké au format TIME en base de données)
 
 Exemple d'utilisation :
 ```
