@@ -175,8 +175,20 @@ class Form
 					case self::TYPE_FILE:
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							if($value) {
-								echo '<a href="'.ROOT.Atomik::get('upload.dir').$value.'" class="btn btn-info btn-sm'.($_thumbnail ? ' fancybox' : '" target="related_page').'"><i class="glyphicon glyphicon-save"></i> Télécharger le fichier : '.$value.'</a>'.EOL;
-								echo '<a href="'.ROOT.PAGE.'/supprimer_fichier/'.$_key.'" class="btn btn-danger btn-sm btn-delete" data-modal-content="Êtes-vous sur de vouloir supprimer le fichier ?"><i class="glyphicon glyphicon-remove"></i> Supprimer le fichier</a>'.EOL;
+								$parts = explode('.', $value);
+								$extension = strtolower(end($parts));
+								if(in_array($extension, array('jpg', 'jpeg', 'gif', 'png'))) {
+									// display image
+									echo '<a href="'.ROOT.Atomik::get('upload.dir').$value.'" class="'.($_thumbnail ? ' fancybox' : '" target="related_page').'">';
+									echo '<img src="'.ROOT.Atomik::get('upload.dir').$value.'" alt="'.$value.'" width="250">';
+									echo '</a>'.EOL;
+								} else {
+									// display link
+									echo '<a href="'.ROOT.Atomik::get('upload.dir').$value.'" class="btn btn-info btn-sm'.($_thumbnail ? ' fancybox' : '" target="related_page').'">';
+									echo '<i class="glyphicon glyphicon-save"></i> Télécharger le fichier : '.$value;
+									echo '</a>'.EOL;
+								}
+								echo '<a href="'.ROOT.PAGE.'/supprimer_fichier/'.$_key.'" class="btn btn-danger btn-sm btn-delete" data-modal-content="Êtes-vous sûr de vouloir supprimer le fichier ?"><i class="glyphicon glyphicon-remove"></i> Supprimer le fichier</a>'.EOL;
 								echo $form->hidden(
 									$_key, 
 									$value
