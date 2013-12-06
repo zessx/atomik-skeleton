@@ -2,6 +2,10 @@
 
 	RewriteEngine on
 	
+	# Force www
+	# RewriteCond %{HTTP_HOST} !^www\.
+	# RewriteRule (.*) http://www.%{HTTP_HOST}/$1 [QSA,R=301,L]
+
 	# redirect 404
 	ErrorDocument 404 /404
 	ErrorDocument 500 /404
@@ -9,6 +13,7 @@
 	# Allow access to assets folder from plugins folders
 	RewriteRule ^app/plugins/(.+)/assets - [L]
 	RewriteRule ^vendor/(.+)/Resources - [L]
+	RewriteRule ^upload/(.+) - [L]
 	
 	# forbid access to files and folders under app and vendor
 	RewriteRule ^app/.*$ - [L,F]
