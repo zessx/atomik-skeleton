@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `id_utilisateur` int(10) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `prenom` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `role` enum('administrateur','utilisateur') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `role` enum('superadministrateur','administrateur','utilisateur') COLLATE utf8_unicode_ci DEFAULT NULL,
   `identifiant` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `mot_de_passe` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   `sel` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -51,5 +51,6 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
 DELETE FROM `utilisateurs`;
 /*!40000 ALTER TABLE `utilisateurs` DISABLE KEYS */;
 INSERT INTO `utilisateurs` (`id_utilisateur`, `nom`, `prenom`, `role`, `identifiant`, `mot_de_passe`, `sel`, `archive`) VALUES
-  (1, 'Administrateur', 'M.', 'administrateur', 'admin', '4dcdd763e140ca7fabf4ecf12ccb8383bf164d59', '21232f297a57a5a743894a0e4a801fc3', 0),
-  (2, 'Utilisateur', 'M.', 'utilisateur', 'user', '5e0f76b90574332a6aaad1a09c9d64885c86dc50', 'ee11cbb19052e40b07aac0ca060c23ee', 0);
+  (1, 'SuperAdministrateur', 'M.', 'superadministrateur', 'superadmin', 'f85e52e0dea150e695f8f90a7119e9c24f73a72e', '17c4520f6cfd1ab53d8745e84681eb49', 0),
+  (2, 'Administrateur', 'M.', 'administrateur', 'admin', '4dcdd763e140ca7fabf4ecf12ccb8383bf164d59', '21232f297a57a5a743894a0e4a801fc3', 0),
+  (3, 'Utilisateur', 'M.', 'utilisateur', 'user', '5e0f76b90574332a6aaad1a09c9d64885c86dc50', 'ee11cbb19052e40b07aac0ca060c23ee', 0);

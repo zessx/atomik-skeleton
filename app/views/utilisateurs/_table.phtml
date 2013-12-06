@@ -1,25 +1,31 @@
-<table class="table table-hover table-condensed table-bordered table-striped table-filtrable table-paginable table-sortable" data-sort-cols="0" data-sort-dirs="asc">
-	<thead>
-		<tr>
-			<th>Nom</th>
-			<th>Prénom</th>
-			<th>Rôle</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php if($utilisateurs): foreach ($utilisateurs as $utilisateur): ?>
-		<tr>
+<?php if(Atomik::uriMatch('index')): ?>
+<table class="table table-hover table-condensed table-bordered table-striped" data-display-length="10">
+<?php else: ?>
+<table class="table table-hover table-condensed table-bordered table-striped table-filtrable table-paginable table-sortable" data-sort-cols="0,1" data-sort-dirs="asc,asc">
+<?php endif; ?>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Rôle</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<?php if($utilisateurs): foreach ($utilisateurs as $utilisateur): ?>
+    	<tr<?= $utilisateur['archive'] == 1 ? ' class="archive" title="Archivé"' : '' ?>>
 			<td><a href="<?= ROOT.'utilisateurs/modifier/'.$utilisateur['id_utilisateur'] ?>"><?= $this->escape($utilisateur['nom']) ?></a></td>
-			<td><?= $this->escape($utilisateur['prenom']) ?></td>
+            <td><?= $this->escape($utilisateur['prenom']) ?></td>
 			<td><?= ucfirst($this->escape($utilisateur['role'])) ?></td>
-			<td class="col-actions">
-				<div class="pull-right">
-					<a type="button" class="btn btn-primary btn-xs" href="<?= ROOT.'utilisateurs/modifier/'.$utilisateur['id_utilisateur'] ?>" title="Modifier l'utilisateur"><span class="glyphicon glyphicon-pencil"></span></a>
-					<a type="button" class="btn btn-danger btn-xs btn-modal" href="<?= ROOT.'utilisateurs/supprimer/'.$utilisateur['id_utilisateur'] ?>" title="Supprimer l'utilisateur"  data-modal-content="Êtes-vous sur de vouloir supprimer cet utilisateur ?"><span class="glyphicon glyphicon-remove"></span></a>
-				</div>
-			</td>
+            <td class="col-actions">
+                <div class="pull-right">
+                    <a type="button" class="btn btn-primary btn-xs" href="<?= ROOT.'utilisateurs/modifier/'.$utilisateur['id_utilisateur'] ?>" title="Modifier l'utilisateur"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <?php if($utilisateur['role'] != 'superadministrateur' && (ROLE_SUPERADMIN || (ROLE_ADMIN && $utilisateur['role'] == 'utilisateur'))): ?>
+                    <a type="button" class="btn btn-danger btn-xs btn-modal" href="<?= ROOT.'utilisateurs/supprimer/'.$utilisateur['id_utilisateur'] ?>" title="Supprimer l'utilisateur"  data-modal-content="Êtes-vous sûr de vouloir supprimer cet utilisateur ?"><span class="glyphicon glyphicon-remove"></span></a>
+                    <?php endif; ?>
+                </div>
+            </td>
 		</tr>
 		<?php endforeach; endif; ?>
-	</tbody>
+    </tbody>
 </table>

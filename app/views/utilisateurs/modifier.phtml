@@ -1,5 +1,5 @@
 <ul class="nav nav-tabs">
-	<li class="active"><a href="#tab_informations" data-toggle="tab">Informations sur l'utilisateur</a></li>
+	<li class="active"><a href="#tab_informations" data-toggle="tab">Utilisateur</a></li>
 </ul>
 
 <div class="tab-content">
@@ -13,6 +13,17 @@
 			<div class="form-group">
 				<div class="col-lg-offset-2 col-lg-10">
 					<?= $form->buttons('Modifier l\'utilisateur', ROOT.'utilisateurs', array('class' => 'btn btn-primary')) ?>
+					<?php if(ROLE_SUPERADMIN || (ROLE_ADMIN && $utilisateur['role'] == 'utilisateur')): ?>
+						<a type="button" class="btn btn-warning btn-modal" href="<?= ROOT.'utilisateurs/mot-de-passe/'.$utilisateur['id_utilisateur'] ?>" 
+							data-modal-content="Êtes-vous sûr de vouloir regénérer un mot de passe pour cet utilisateur ?" 
+							data-modal-confirm="Oui, regénérer" 
+							data-modal-confirm-class="warning"
+							data-modal-cancel="Non, garder le mot de passe actuel">Régénérer un mot de passe</a>
+						<?php if($utilisateur['role'] != 'superadministrateur'): ?>
+						<a type="button" class="btn btn-danger btn-modal" href="<?= ROOT.'utilisateurs/supprimer/'.$utilisateur['id_utilisateur'] ?>" 
+							data-modal-content="Êtes-vous sûr de vouloir supprimer cet utilisateur ?">Supprimer l'utilisateur</a>
+						<?php endif; ?>
+					<?php endif; ?>
 				</div>
 			</div>
 		</form>

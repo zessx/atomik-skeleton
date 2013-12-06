@@ -2,8 +2,10 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Loccapi</title>
+		<title><?= $title ?> - Atomik</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->asset('assets/images/favicon.ico') ?>" />
 		
 		<link href="<?php echo $this->asset('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
 		<link href="<?php echo $this->asset('assets/css/app.css') ?>" rel="stylesheet">
@@ -17,11 +19,11 @@
 	</head>
 	<body>
 
-		<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+		<header class="navbar navbar-custom navbar-fixed-top bs-docs-nav" role="banner">
 			<div class="container">
 
 				<div class="navbar-header">
-					<a class="navbar-brand" href="<?= ROOT ?>"><span class="glyphicon glyphicon-record"></span> Loccapi</a>
+					<a class="navbar-brand" href="<?= ROOT ?>"><span class="glyphicon glyphicon-record"></span> Atomik</a>
 				</div>
 
 			</div>
@@ -76,7 +78,7 @@
 		</section>
 		<footer>
 			<div class="container">
-				<p>&copy; <?php echo date('Y') ?>, Loccapi - <small>Conception & Réalisation : <a href="http://www.alancia.fr" class="external">Alancia</a></small></p>
+				<p>&copy; <?php echo date('Y') ?>, Atomik - <small>Conception & Réalisation : <a href="http://zes.sx" class="external">@zessx</a></small></p>
 			</div>
 		</footer>
 
