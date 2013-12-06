@@ -21,6 +21,7 @@ DROP TABLE IF EXISTS `logs`;
 CREATE TABLE IF NOT EXISTS `logs` (
   `id_log` int(10) NOT NULL AUTO_INCREMENT,
   `date` datetime DEFAULT NULL,
+  `ip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `utilisateur` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `id_utilisateur` int(10) DEFAULT NULL,
   `objet` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,

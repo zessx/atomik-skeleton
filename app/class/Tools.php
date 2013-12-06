@@ -7,6 +7,7 @@ class Tools
 	public static function log($object, $id, $action, $comment = '') {
 		Atomik::get('db')->insert('logs', array(
 			'date' 				=> date('Y-m-d H:i:s'),
+			'ip'				=> $_SERVER['REMOTE_ADDR'],
 			'utilisateur'		=> Atomik::get('session.user.name'),
 			'id_utilisateur' 	=> Atomik::get('session.user.id'),
 			'objet'		 		=> $object,
