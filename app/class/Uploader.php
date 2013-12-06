@@ -67,29 +67,7 @@ class Uploader
 	/* Clean filename */
 	private static function clean($string) {
 		$string = utf8_decode($string);
-		$string = strtr(
-		strtr(
-			$string,
-			utf8_decode(
-				'ŠŽšžŸÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÑÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïñòóôõöøùúûüýÿ?$,&:()!{}."§_#=/\\;°'),
-				'SZszYAAAAAACEEEEIIIINOOOOOOUUUUYaaaaaaceeeeiiiinoooooouuuuyy'
-			),
-			array(
-				'Þ' => 'TH', 
-				'þ' => 'th', 
-				'Ð' => 'DH', 
-				'ð' => 'dh', 
-				'@'=>'-at-',
-				'ß' => 'ss', 
-				'Œ' => 'OE', 
-				'œ' => 'oe', 
-				'Æ' => 'AE',
-				'æ' => 'ae', 
-				'µ' => 'u', 
-				'+' => '-', 
-				' '=>'-'
-			)
-		);
+		$string = preg_replace('/[^\w.-]/', '', $string);
 
 		if(empty($string))
 			return '-';
