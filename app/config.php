@@ -33,6 +33,13 @@ Atomik::set(array(
 		)
 	),
 
+	'dompdf' => array(
+		'path' => 'vendor/dompdf/',
+		'files' => array(
+			'config' => 'dompdf_config.inc.php'
+		)
+	),
+
 	'helpers' => array(
 		'filters' => array(
 			'required_message' => 'Vous devez remplir le champ %s.',
