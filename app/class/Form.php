@@ -144,7 +144,7 @@ class Form
 
 					case self::TYPE_CHECKBOX:
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->checkbox($_key, $_checked, $value,  
+							echo $form->checkbox($_key, $_checked, (is_null($value) ? 0 : $value),  
 								array_merge(
 									($_disabled ? array('readonly' => '') : array()), 
 									array(
