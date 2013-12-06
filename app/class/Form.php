@@ -188,7 +188,7 @@ class Form
 									echo '<i class="glyphicon glyphicon-save"></i> Télécharger le fichier : '.$value;
 									echo '</a>'.EOL;
 								}
-								echo '<a href="'.ROOT.PAGE.'/supprimer_fichier/'.$_key.'" class="btn btn-danger btn-sm btn-delete" data-modal-content="Êtes-vous sûr de vouloir supprimer le fichier ?"><i class="glyphicon glyphicon-remove"></i> Supprimer le fichier</a>'.EOL;
+								echo '<a href="'.ROOT.PAGE.'/supprimer_fichier/'.$_key.'" class="btn btn-danger btn-sm btn-modal" data-modal-content="Êtes-vous sûr de vouloir supprimer le fichier ?"><i class="glyphicon glyphicon-remove"></i> Supprimer le fichier</a>'.EOL;
 								echo $form->hidden(
 									$_key, 
 									$value
