@@ -4,7 +4,6 @@
 Atomik::set(array(
 
 	'base_dir' => 'atomik-skeleton/',
-	'autostart' => false,
 
 	'plugins' => array(
 		'DebugBar' => array(
@@ -31,6 +30,13 @@ Atomik::set(array(
 			'bootstrap' => 'app/init.php',
 			'pre_dispatch' => 'app/pre.php',
 			'post_dispatch' => 'app/post.php'
+		)
+	),
+
+	'helpers' => array(
+		'filters' => array(
+			'required_message' => 'Vous devez remplir le champ %s.',
+			'default_message' => 'Le champ %s n\'est pas valide.',
 		)
 	),
 
@@ -63,14 +69,7 @@ Atomik::set(array(
 			'clients/supprimer/:id' 						=> array('action' => 'clients/supprimer'),
 
 		)
-	),
-
-	'helpers' => array(
-		'filters' => array(
-			'required_message' => 'Vous devez remplir le champ %s.',
-			'default_message' => 'Le champ %s n\'est pas valide.',
-		)
-	)	
+	),	
 	
 ));
 
