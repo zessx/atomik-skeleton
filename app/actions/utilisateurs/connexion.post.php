@@ -30,6 +30,6 @@ if(!$utilisateur) {
 
     Tools::log('utilisateurs', $utilisateur['id_utilisateur'], 'connexion');
 	$this->flash('Bienvenue, '.Atomik::get('session.user.name'), 'success');
-	$this->redirect(Atomik::url('@home'));
+	Atomik::redirect(Atomik::url('@home'), false);
 
 }

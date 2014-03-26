@@ -20,7 +20,7 @@ if(!$error) {
 	if($this['db']->insert('clients', $data)) {
 		Tools::log('clients', $this['db']->lastInsertId(), 'insert');
 		$this->flash('Le client a bien été ajouté.', 'success');
-		$this->redirect(Atomik::url('@cl_all'));
+		Atomik::redirect(Atomik::url('@cl_all'), false);
 	} else {
 		$this->flash('Une erreur est survenue lors de l\'ajout du client.', 'danger');
 	}

@@ -31,4 +31,4 @@ if($this['db']->insert('utilisateurs', $data)) {
 } else {
 	$this->flash('Une erreur est survenue lors de l\'ajout de l\'utilisateur.', 'danger');
 }
-$this->redirect(Atomik::url('@ut_all'));
+Atomik::redirect(Atomik::url('@ut_all'), false);

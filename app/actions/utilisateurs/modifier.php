@@ -53,7 +53,7 @@ $fields = array(
 
 if (!isset($this['request.id'])) {
     $this->flash('Le paramètre [id] est manquant.', 'danger');
-    $this->redirect(Atomik::url('@ut_all'), false);
+    Atomik::redirect(Atomik::url('@ut_all'), false);
 }
 
 $utilisateur = $this['db']->selectOne('utilisateurs', array('id_utilisateur' => $this['request.id']));

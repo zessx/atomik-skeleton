@@ -12,4 +12,4 @@ if($this['db']->update('utilisateurs', $data, array('id_utilisateur' => $data['i
 } else {
     $this->flash('Une erreur est survenue lors de la modification de l\'utilisateur.', 'danger');
 }
-$this->redirect(Atomik::url('@ut_all'));
+Atomik::redirect(Atomik::url('@ut_all'), false);

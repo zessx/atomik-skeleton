@@ -2,18 +2,18 @@
 
 if (!isset($this['request.id'])) {
     $this->flash('Le paramètre [id] est manquant.', 'danger');
-    $this->redirect(Atomik::url('@cl_all'), false);
+    Atomik::redirect(Atomik::url('@cl_all'), false);
 }
 if (!isset($this['request.file'])) {
     $this->flash('Le paramètre [file] est manquant.', 'danger');
-    $this->redirect(Atomik::url('@cl_all'), false);
+    Atomik::redirect(Atomik::url('@cl_all'), false);
 }
 
 $client = $this['db']->selectOne('clients', array('id_client' => $this['request.id']));
 
 if (!$client) {
     $this->flash('Ce client n\'existe pas.', 'danger');
-    $this->redirect(Atomik::url('@cl_all'), false);
+    Atomik::redirect(Atomik::url('@cl_all'), false);
 }
 
 if(Uploader::delete($client[$this['request.file']])) {
@@ -23,4 +23,4 @@ if(Uploader::delete($client[$this['request.file']])) {
 	$this->flash('Une erreur est survenue lors de la suppression du fichier.', 'danger');
 }
 
-$this->redirect(Atomik::url('@cl_upd', array('id' => $this['request.id'])), false);
+Atomik::redirect(Atomik::url('@cl_upd', array('id' => $this['request.id'])), false);

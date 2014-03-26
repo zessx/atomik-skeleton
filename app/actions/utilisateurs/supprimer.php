@@ -25,4 +25,4 @@ if (!isset($this['request.id'])) {
 
 	}
 }
-$this->redirect(Atomik::url('@ut_all'), false);
+Atomik::redirect(Atomik::url('@ut_all'), false);
