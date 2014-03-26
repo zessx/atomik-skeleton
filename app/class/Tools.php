@@ -56,4 +56,25 @@ class Tools
 		return null;
 	}
 
+	/* Générer un slug */
+	public static function slugify($input, $slugs = array()) {
+		$output = preg_replace('/[^\pL\d]+/u', '-', $input);
+		$output = trim($output, '-');
+		$output = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $output);
+		$output = strtolower($output);
+		$output = preg_replace('/[^\w-]+/', '', $output);
+		$output = empty($output) ? 'n-a' : $output;
+		if(!empty($slugs) && array_search($output, $slugs) !== false) {
+			$n = 1;
+			foreach ($slugs as $slug) {
+				$matches = array();
+				if(preg_match('/^'.$output.'(?<suffix>-\d+)?$/', $slug, $matches)) {
+					$n = intval(substr($matches['suffix'], 1)) + 1;
+				}
+			}
+			$output .= '-'.$n;
+		}
+		return $output;
+	}
+
 }
