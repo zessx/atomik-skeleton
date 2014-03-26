@@ -9,6 +9,7 @@ define('EOL', 	"\r\n");
 Atomik::needed('DateFormat');
 Atomik::needed('Form');
 Atomik::needed('Tools');
+Atomik::needed('Mailer');
 Atomik::needed('Uploader');
 
 if(!Atomik::has('session.user')) {

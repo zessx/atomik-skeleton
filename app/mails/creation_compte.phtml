@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<head>
+		<title>Création de votre compte</title>
+		<style type="text/css">
+			dl { clear:both; margin-left: 15px; }
+			dt { width:160px; float:left }
+		</style>
+	</head>
+	<body>
+		<h2>Mme, M. {{ prenom }} {{ nom }},</h2>
+		<h3>Bienvenue !</h3>
+
+		<p>
+			Un administrateur vient de vous créer un compte.<br>
+			Vous pouvez dès à présent y accéder à l'aide de vos identifiants,<br>
+			que vous trouverez ci-dessous :
+		</p>
+		<dl>
+			<dt>Url de connexion : </dt>
+				<dd><a href="{{ url }}">{{ url }}</a></dd>
+			<dt>Identifiant : </dt>
+				<dd>{{ identifiant }}</dd>
+			<dt>Mot de passe : </dt>
+				<dd>{{ mot_de_passe }}</dd>
+		</dl>
+
+		<p>
+			Si vous le désirez, vous pourrez modifier votre mot de passe en<br>
+			accédant à la rubrique "Mon compte" de l'extranet.
+		</p>
+		<br>
+
+		<p>
+			Cordialement,<br>
+			L'équipe.
+		</p>
+		<br>
+
+		<hr>
+		<small>Ceci est un message automatique, merci de ne pas y répondre.</small>
+	</body>
+</html>

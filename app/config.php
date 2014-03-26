@@ -59,6 +59,11 @@ Atomik::set(array(
 		'max_filesize' => 2 * 1024
 	),
 
+	'mails' => array(
+		'dir' => 'app/mails/',
+		'sender' => 'no-reply@gam-22.com',
+	),
+
 	'app' => array(
 		'layout' => '_layout',
 		'language' => 'fr',
