@@ -1,7 +1,7 @@
 <?php
 
 if (($data = $this->filter($_POST, $fields)) === false) {
-	$this->flash($this['helpers.filters.messages'], 'danger');
+	Atomik::flash($this['helpers.filters.messages'], 'danger');
 	return;
 }
 
@@ -12,16 +12,16 @@ if(!isset($_POST['logo']) && $_FILES['logo'] && $_FILES['logo']['tmp_name']) {
 		$data['logo'] = $message['success'];
 	} else {
 		$error = true;
-		$this->flash($message['error'], 'danger');
+		Atomik::flash($message['error'], 'danger');
 	}
 }
 
 if(!$error) {
 	if($this['db']->insert('clients', $data)) {
 		Tools::log('clients', $this['db']->lastInsertId(), 'insert');
-		$this->flash('Le client a bien été ajouté.', 'success');
+		Atomik::flash('Le client a bien été ajouté.', 'success');
 		Atomik::redirect(Atomik::url('@cl_all'), false);
 	} else {
-		$this->flash('Une erreur est survenue lors de l\'ajout du client.', 'danger');
+		Atomik::flash('Une erreur est survenue lors de l\'ajout du client.', 'danger');
 	}
 }

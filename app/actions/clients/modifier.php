@@ -65,7 +65,7 @@ $fields = array(
 );
 
 if (!isset($this['request.id'])) {
-	$this->flash('Le paramètre [id] est manquant.', 'danger');
+	Atomik::flash('Le paramètre [id] est manquant.', 'danger');
 	Atomik::redirect(Atomik::url('@cl_all'), false);
 }
 

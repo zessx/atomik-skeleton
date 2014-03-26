@@ -11,7 +11,7 @@ $fields = array(
 );
 
 if (($data = $this->filter($_POST, $fields)) === false) {
-    $this->flash($this['helpers.filters.messages'], 'danger');
+    Atomik::flash($this['helpers.filters.messages'], 'danger');
     return;
 }
 
@@ -21,7 +21,7 @@ $utilisateur = $this['db']->selectOne('utilisateurs', array(
 ));
 
 if(!$utilisateur) {
-	$this->flash('Identifiant ou mot de passe incorrect', 'danger');
+	Atomik::flash('Identifiant ou mot de passe incorrect', 'danger');
 } else {
 
     Atomik::set('session.user.id',      $utilisateur['id_utilisateur']);
@@ -29,7 +29,7 @@ if(!$utilisateur) {
     Atomik::set('session.user.role',    $utilisateur['role']);
 
     Tools::log('utilisateurs', $utilisateur['id_utilisateur'], 'connexion');
-	$this->flash('Bienvenue, '.Atomik::get('session.user.name'), 'success');
+	Atomik::flash('Bienvenue, '.Atomik::get('session.user.name'), 'success');
 	Atomik::redirect(Atomik::url('@home'), false);
 
 }

@@ -2,7 +2,7 @@
 
 if (!isset($this['request.id'])) {
 
-    $this->flash('Le paramètre [id] est manquant.', 'danger');
+    Atomik::flash('Le paramètre [id] est manquant.', 'danger');
 
 } else {
 
@@ -12,15 +12,15 @@ if (!isset($this['request.id'])) {
 		($utilisateur['role'] == 'superadministrateur')
 	) {
 
-	    $this->flash('Vous n\'avez pas les droits suffisants pour supprimer cet utilisateur.', 'danger');
+	    Atomik::flash('Vous n\'avez pas les droits suffisants pour supprimer cet utilisateur.', 'danger');
 
 	} else {
 
 		if($this['db']->update('utilisateurs', array('archive' => 1), array('id_utilisateur' => $this['request.id']))) {
 			Tools::log('utilisateurs', $this['request.id'], 'delete');
-		    $this->flash('L\'utilisateur a bien été supprimé.', 'success');
+		    Atomik::flash('L\'utilisateur a bien été supprimé.', 'success');
 		} else {
-			$this->flash('Une erreur est survenue lors de la suppression de l\'utilisateur.', 'danger');
+			Atomik::flash('Une erreur est survenue lors de la suppression de l\'utilisateur.', 'danger');
 		}
 
 	}
