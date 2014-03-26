@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<title><?= $title ?> - Atomik</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
+
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->asset('assets/images/favicon.ico') ?>" />
-		
+
 		<link href="<?php echo $this->asset('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
 		<link href="<?php echo $this->asset('assets/css/plugins/jquery.fancybox.css') ?>" rel="stylesheet">
 		<link href="<?php echo $this->asset('assets/css/app.css') ?>" rel="stylesheet">
@@ -29,21 +29,21 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
-					</button>	
-					<a class="navbar-brand" href="<?= ROOT ?>"><span class="glyphicon glyphicon-record"></span> Atomik</a>
+					</button>
+					<a class="navbar-brand" href="<?= Atomik::url('@home') ?>"><span class="glyphicon glyphicon-record"></span> Atomik</a>
 				</div>
 
 				<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-					
+
 					<ul class="nav navbar-nav pull-right hidden-xs">
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<span class="glyphicon glyphicon-user"></span>
 								<span class="username"> Bienvenue, <?= Atomik::get('session.user.name') ?></span> <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<?= ROOT ?>utilisateurs/mon-compte"><span class="glyphicon glyphicon-user"></span> Mes informations</a></li>
-								<li><a href="<?= ROOT ?>utilisateurs/mon-compte/mot-de-passe"><span class="glyphicon glyphicon-wrench"></span> Modifier mon mot de passe</a></li>
-								<li><a href="<?= ROOT ?>deconnexion"><span class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
+								<li><a href="<?= Atomik::url('@ut_account') ?>"><span class="glyphicon glyphicon-user"></span> Mes informations</a></li>
+								<li><a href="<?= Atomik::url('@ut_upd_pwd') ?>"><span class="glyphicon glyphicon-wrench"></span> Modifier mon mot de passe</a></li>
+								<li><a href="<?= Atomik::url('@logout') ?>"><span class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -52,14 +52,14 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Clients <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<?= ROOT ?>clients">Clients</a></li>
+								<li><a href="<?= Atomik::url('@cl_all') ?>">Clients</a></li>
 							</ul>
 						</li>
-						<li class="visible-xs"><a href="<?= ROOT ?>utilisateurs/mon-compte">Mes informations</a></li>
-						<li class="visible-xs"><a href="<?= ROOT ?>utilisateurs/mon-compte/mot-de-passe">Modifier mon mot de passe</a></li>
-						<li class="visible-xs"><a href="<?= ROOT ?>deconnexion">Déconnexion</a></li>
+						<li class="visible-xs"><a href="<?= Atomik::url('@ut_account') ?>">Mes informations</a></li>
+						<li class="visible-xs"><a href="<?= Atomik::url('@ut_upd_pwd') ?>">Modifier mon mot de passe</a></li>
+						<li class="visible-xs"><a href="<?= Atomik::url('@logout') ?>">Déconnexion</a></li>
 					</ul>
-					
+
 				</nav>
 			</div>
 		</header>
@@ -70,20 +70,19 @@
 				<div class="col-md-3 visible-lg">
 					<div class="sidenav" role="complementary" data-spy="affix">
 						<ul class="nav bs-sidenav">
-							
+
 							<li><h4><span class="glyphicon glyphicon-earphone"></span> Gestion des clients</h4></li>
-							<li><a <?= Atomik::uriMatch('/clients*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>clients">Clients</a></li>
+							<li><a <?= Atomik::uriMatch('/clients*/') ? 'class="active"' : '' ?> href="<?= Atomik::url('@cl_all') ?>">Clients</a></li>
 
 							<?php if(ROLE_ADMIN) { ?>
 							<li><h4><span class="glyphicon glyphicon-stats"></span> Administration</h4></li>
-							<li><a <?= Atomik::uriMatch('/utilisateurs(?!\/mon-compte)*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>utilisateurs">Utilisateurs</a></li>
-							<li><a <?= Atomik::uriMatch('/statistiques*/') ? 'class="active"' : '' ?> href="<?= ROOT ?>statistiques">Statistiques</a></li>
+							<li><a <?= Atomik::uriMatch('/utilisateurs(?!\/mon-compte)*/') ? 'class="active"' : '' ?> href="<?= Atomik::url('@ut_all') ?>">Utilisateurs</a></li>
 							<?php } ?>
 
 							<li><h4><span class="glyphicon glyphicon-user"></span> Gestion de l'extranet</h4></li>
-							<li><a <?= Atomik::uriMatch('utilisateurs\/mon-compte(?!\/mot-de-passe)*') ? 'class="active"' : '' ?> href="<?= ROOT ?>utilisateurs/mon-compte">Mes informations</a></li>
-							<li><a <?= Atomik::uriMatch('utilisateurs\/mon-compte\/mot-de-passe*') ? 'class="active"' : '' ?> href="<?= ROOT ?>utilisateurs/mon-compte/mot-de-passe">Modifier mon mot de passe</a></li>
-							<li><a href="<?= ROOT ?>deconnexion">Déconnexion</a></li>
+							<li><a <?= Atomik::uriMatch('utilisateurs\/mon-compte(?!\/mot-de-passe)*') ? 'class="active"' : '' ?> href="<?= Atomik::url('@ut_account') ?>">Mes informations</a></li>
+							<li><a <?= Atomik::uriMatch('utilisateurs\/mon-compte\/mot-de-passe*') ? 'class="active"' : '' ?> href="<?= Atomik::url('@ut_upd_pwd') ?>">Modifier mon mot de passe</a></li>
+							<li><a href="<?= Atomik::url('@logout') ?>">Déconnexion</a></li>
 						</ul>
 					  </div>
 				</div>
@@ -103,7 +102,7 @@
 							<?php endforeach; ?>
 						<?php endforeach; ?>
 					<?php endif ?>
-				
+
 					<div id="content" role="main">
 						<?php echo $contentForLayout; ?>
 					</div>

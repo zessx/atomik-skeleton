@@ -1,11 +1,11 @@
-<?= $form = $this->form(ROOT.'utilisateurs/mon-compte/mot-de-passe', null, array('class' => 'form-horizontal')) ?>
+<?= $form = $this->form(Atomik::url('@ut_upd_pwd'), null, array('class' => 'form-horizontal')) ?>
 <?= Form::generateFields($form, $fields, $utilisateur) ?>
 
 	<hr>
-	
+
 	<div class="form-group">
 		<div class="col-lg-offset-2 col-lg-10">
-			<?= $form->buttons('Modifier mon mot de passe', ROOT.'utilisateurs/mon-compte/mot-de-passe', array('class' => 'btn btn-primary')) ?>
+			<?= $form->buttons('Modifier mon mot de passe', Atomik::url('@ut_upd_pwd'), array('class' => 'btn btn-primary')) ?>
 		</div>
 	</div>
 </form>

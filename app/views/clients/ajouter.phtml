@@ -5,14 +5,14 @@
 <div class="tab-content">
 
 	<div class="tab-pane active" id="tab_informations">
-		<?= $form = $this->form(ROOT.'clients/ajouter', null, array('class' => 'form-horizontal', 'enctype' => 'multipart/form-data')) ?>
+		<?= $form = $this->form(Atomik::url('@cl_add'), null, array('class' => 'form-horizontal', 'enctype' => 'multipart/form-data')) ?>
 		<?= Form::generateFields($form, $fields) ?>
 
 			<hr>
-			
+
 			<div class="form-group">
 				<div class="col-lg-offset-2 col-lg-4">
-					<?= $form->buttons('Ajouter le client', ROOT.'clients', array('class' => 'btn btn-primary')) ?>
+					<?= $form->buttons('Ajouter le client', Atomik::url('@cl_all'), array('class' => 'btn btn-primary')) ?>
 				</div>
 			</div>
 		</form>

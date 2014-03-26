@@ -14,14 +14,14 @@
     <tbody>
     	<?php if($utilisateurs): foreach ($utilisateurs as $utilisateur): ?>
     	<tr<?= $utilisateur['archive'] == 1 ? ' class="archive" title="Archivé"' : '' ?>>
-			<td><a href="<?= ROOT.'utilisateurs/modifier/'.$utilisateur['id_utilisateur'] ?>"><?= $this->escape($utilisateur['nom']) ?></a></td>
+			<td><a href="<?= Atomik::url('@ut_upd', array('id' => $utilisateur['id_utilisateur'])) ?>"><?= $this->escape($utilisateur['nom']) ?></a></td>
             <td><?= $this->escape($utilisateur['prenom']) ?></td>
 			<td><?= ucfirst($this->escape($utilisateur['role'])) ?></td>
             <td class="col-actions">
                 <div class="pull-right">
-                    <a type="button" class="btn btn-primary btn-xs" href="<?= ROOT.'utilisateurs/modifier/'.$utilisateur['id_utilisateur'] ?>" title="Modifier l'utilisateur"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a type="button" class="btn btn-primary btn-xs" href="<?= Atomik::url('@ut_upd', array('id' => $utilisateur['id_utilisateur'])) ?>" title="Modifier l'utilisateur"><span class="glyphicon glyphicon-pencil"></span></a>
                     <?php if($utilisateur['role'] != 'superadministrateur' && (ROLE_SUPERADMIN || (ROLE_ADMIN && $utilisateur['role'] == 'utilisateur'))): ?>
-                    <a type="button" class="btn btn-danger btn-xs btn-modal" href="<?= ROOT.'utilisateurs/supprimer/'.$utilisateur['id_utilisateur'] ?>" title="Supprimer l'utilisateur"  data-modal-content="Êtes-vous sûr de vouloir supprimer cet utilisateur ?"><span class="glyphicon glyphicon-remove"></span></a>
+                    <a type="button" class="btn btn-danger btn-xs btn-modal" href="<?= Atomik::url('@ut_del', array('id' => $utilisateur['id_utilisateur'])) ?>" title="Supprimer l'utilisateur"  data-modal-content="Êtes-vous sûr de vouloir supprimer cet utilisateur ?"><span class="glyphicon glyphicon-remove"></span></a>
                     <?php endif; ?>
                 </div>
             </td>

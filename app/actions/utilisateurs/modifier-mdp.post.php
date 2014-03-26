@@ -28,4 +28,4 @@ if($this['db']->update('utilisateurs', $data, array('id_utilisateur' => $data['i
 } else {
     $this->flash('Une erreur est survenue lors de la modification de vos informations.', 'danger');
 }
-$this->redirect(ROOT.'utilisateurs/mon-compte');
+$this->redirect(Atomik::url('@ut_account'));

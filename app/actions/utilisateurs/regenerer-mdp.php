@@ -2,7 +2,7 @@
 
 if (!isset($this['request.id'])) {
     $this->flash('Le paramètre [id] est manquant.', 'danger');
-    $this->redirect(ROOT.'utilisateurs', false);
+    $this->redirect(Atomik::url('@ut_all'), false);
 }
 
 $utilisateur = $this['db']->selectOne('utilisateurs', array('id_utilisateur' => $this['request.id']));
@@ -20,4 +20,4 @@ if($this['db']->update('utilisateurs', $utilisateur, array('id_utilisateur' => $
 } else {
     $this->flash('Une erreur est survenue lors de la génération du nouveau mot de passe.', 'danger');
 }
-$this->redirect(ROOT.'utilisateurs/modifier/'.$utilisateur['id_utilisateur']);
+$this->redirect(Atomik::url('@ut_upd', array('id' => $utilisateur['id_utilisateur'])));

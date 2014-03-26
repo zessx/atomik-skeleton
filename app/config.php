@@ -3,7 +3,7 @@
 /* Local conf */
 Atomik::set(array(
 
-	'base_dir' => 'atomik-skeleton/',
+	'base_dir' => '_zessx/atomik-skeleton/',
 
 	'plugins' => array(
 		'DebugBar' => array(
@@ -64,24 +64,77 @@ Atomik::set(array(
 		'language' => 'fr',
 		'routes' => array(
 
-			'404' 											=> array('action' => '404'),
+			/* Général */
+			'/' => array(
+				'@name' => 'home',
+				'action' => 'index',
+			),
+			'connexion' => array(
+				'@name' => 'login',
+				'action' => 'utilisateurs/connexion',
+				),
+			'deconnexion' => array(
+				'@name' => 'logout',
+				'action' => 'utilisateurs/deconnexion',
+				),
 
-			'connexion' 									=> array('action' => 'utilisateurs/connexion'),
-			'deconnexion' 									=> array('action' => 'utilisateurs/deconnexion'),
+			/* Erreurs */
+			'404' => array(
+				'@name' => '404',
+				'action' => '404',
+			),
 
-			'utilisateurs'											=> array('action' => 'utilisateurs/index'),
-			'utilisateurs/ajouter'									=> array('action' => 'utilisateurs/ajouter'),
-			'utilisateurs/modifier/:id' 							=> array('action' => 'utilisateurs/modifier'),
-			'utilisateurs/supprimer/:id' 							=> array('action' => 'utilisateurs/supprimer'),
-			'utilisateurs/mot-de-passe/:id' 						=> array('action' => 'utilisateurs/regenerer-mdp'),
-			'utilisateurs/mon-compte' 								=> array('action' => 'utilisateurs/mon-compte'),
-			'utilisateurs/mon-compte/mot-de-passe' 					=> array('action' => 'utilisateurs/modifier-mdp'),
+			/* Utilisateurs */
+			'utilisateurs' => array(
+				'@name' => 'ut_all',
+				'action' => 'utilisateurs/index',
+			),
+			'utilisateurs/ajouter' => array(
+				'@name' => 'ut_add',
+				'action' => 'utilisateurs/ajouter',
+			),
+			'utilisateurs/modifier/:id' => array(
+				'@name' => 'ut_upd',
+				'action' => 'utilisateurs/modifier',
+			),
+			'utilisateurs/supprimer/:id' => array(
+				'@name' => 'ut_del',
+				'action' => 'utilisateurs/supprimer',
+			),
+			'utilisateurs/mot-de-passe/:id' => array(
+				'@name' => 'ut_regen_pwd',
+				'action' => 'utilisateurs/regenerer-mdp',
+			),
+			'utilisateurs/mon-compte/mot-de-passe' => array(
+				'@name' => 'ut_upd_pwd',
+				'action' => 'utilisateurs/modifier-mdp',
+			),
+			'utilisateurs/mon-compte' => array(
+				'@name' => 'ut_account',
+				'action' => 'utilisateurs/mon-compte',
+			),
 
-			'clients'										=> array('action' => 'clients/index'),
-			'clients/ajouter'								=> array('action' => 'clients/ajouter'),
-			'clients/modifier/:id' 							=> array('action' => 'clients/modifier'),
-			'clients/modifier/:id/supprimer_fichier/:file' 	=> array('action' => 'clients/supprimer_fichier'),
-			'clients/supprimer/:id' 						=> array('action' => 'clients/supprimer'),
+			/* Client */
+			'clients' => array(
+				'@name' => 'cl_all',
+				'action' => 'clients/index',
+			),
+			'clients/ajouter' => array(
+				'@name' => 'cl_add',
+				'action' => 'clients/ajouter',
+			),
+			'clients/modifier/:id' => array(
+				'@name' => 'cl_upd',
+				'action' => 'clients/modifier',
+			),
+			'clients/supprimer/:id' => array(
+				'@name' => 'cl_del',
+				'action' => 'clients/supprimer',
+			),
+			'clients/modifier/:id/supprimer_fichier/:file' => array(
+				'@name' => 'cl_del_file',
+				'action' => 'clients/supprimer_fichier',
+			),
 
 		)
 	),

@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<title><?= $title ?> - Atomik</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
+
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->asset('assets/images/favicon.ico') ?>" />
-		
+
 		<link href="<?php echo $this->asset('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
 		<link href="<?php echo $this->asset('assets/css/app.css') ?>" rel="stylesheet">
 
@@ -23,7 +23,7 @@
 			<div class="container">
 
 				<div class="navbar-header">
-					<a class="navbar-brand" href="<?= ROOT ?>"><span class="glyphicon glyphicon-record"></span> Atomik</a>
+					<a class="navbar-brand" href="<?= Atomik::url('@home') ?>"><span class="glyphicon glyphicon-record"></span> Atomik</a>
 				</div>
 
 			</div>
@@ -47,9 +47,9 @@
 							<?php endforeach; ?>
 						<?php endforeach; ?>
 					<?php endif ?>
-				
+
 					<div id="content" role="main">
-						<?= $form = $this->form(ROOT.'connexion', null, array('class' => 'form-horizontal')) ?>
+						<?= $form = $this->form(Atomik::url('@login'), null, array('class' => 'form-horizontal')) ?>
 							<div class="form-group">
 								<label for="identifiant" class="col-lg-2">Identifiant</label>
 								<div class="col-lg-4">
@@ -64,7 +64,7 @@
 							</div>
 
 							<hr>
-							
+
 							<div class="form-group">
 								<div class="col-lg-offset-2 col-lg-4">
 									<button type="submit" class="btn btn-primary">Se connecter</button>

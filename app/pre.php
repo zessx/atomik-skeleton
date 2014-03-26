@@ -13,7 +13,7 @@ include 'class/Uploader.php';
 
 if(!Atomik::has('session.user')) {
 	if(PAGE != 'connexion')
-		Atomik::redirect(ROOT.'connexion');
+		Atomik::redirect(Atomik::url('@login'));
 } else {
 	define('ROLE_ADMIN', 		in_array(Atomik::get('session.user.role'), array('superadministrateur', 'administrateur')));
 	define('ROLE_SUPERADMIN', 	Atomik::get('session.user.role') == 'superadministrateur');

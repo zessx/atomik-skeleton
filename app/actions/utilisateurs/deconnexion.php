@@ -9,4 +9,4 @@ Atomik::delete('session.user');
 
 $this->flash('Vous avez bien été déconnecté', 'success');
 
-$this->redirect(ROOT.'connexion');
+$this->redirect(Atomik::url('@login'));

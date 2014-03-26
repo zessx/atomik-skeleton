@@ -3,7 +3,7 @@
 if (!isset($this['request.id'])) {
 
 	$this->flash('Le paramètre [id] est manquant.', 'danger');
-	
+
 } else {
 
 	$client = $this['db']->selectOne('clients', array('id_client' => $this['request.id']));
@@ -18,4 +18,4 @@ if (!isset($this['request.id'])) {
 	}
 
 }
-$this->redirect(ROOT.'clients', false);
+$this->redirect(Atomik::url('@cl_all'), false);

@@ -1,11 +1,11 @@
-<?= $form = $this->form(ROOT.'utilisateurs/mon-compte', null, array('class' => 'form-horizontal')) ?>
+<?= $form = $this->form(Atomik::url('@ut_account'), null, array('class' => 'form-horizontal')) ?>
 <?= Form::generateFields($form, $fields, $utilisateur) ?>
 
 	<hr>
-	
+
 	<div class="form-group">
 		<div class="col-lg-offset-2 col-lg-10">
-			<?= $form->buttons('Modifier mes informations', ROOT.'utilisateurs/mon-compte', array('class' => 'btn btn-primary')) ?>
+			<?= $form->buttons('Modifier mes informations', Atomik::url('@ut_account'), array('class' => 'btn btn-primary')) ?>
 		</div>
 	</div>
 </form>
