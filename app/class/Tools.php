@@ -1,6 +1,6 @@
 <?php
 
-class Tools 
+class Tools
 {
 
 	/* Ajoute un log en BDD */
@@ -42,15 +42,18 @@ class Tools
 		return 'danger';
 	}
 
-	/* Recherche une variable dans les données POST et GET */
-	public static function requestParam($name, $type = 'both') {
-		if($type == 'post' || $type == 'both')
+	/* Recherche une variable dans les données POST, GET, FILE */
+	public static function requestParam($name, $type = 'post|get') {
+		if(strpos($type, 'post') !== false || $type == 'all')
 			if(isset($_POST[$name]))
 				return $_POST[$name];
-		if($type == 'get' || $type == 'both')
+		if(strpos($type, 'get') !== false || $type == 'all')
 			if(isset($_GET[$name]))
 				return $_GET[$name];
+		if(strpos($type, 'file') !== false || $type == 'all')
+			if(isset($_FILE[$name]))
+				return $_FILE[$name];
 		return null;
 	}
-	
+
 }
