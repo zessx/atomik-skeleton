@@ -1,6 +1,6 @@
 <?php
 
-class Form 
+class Form
 {
 
 	const TYPE_TEXT			= 'text';
@@ -22,11 +22,13 @@ class Form
 	const WEIGHT_HEAVY 		= '-lg';
 
 	const SIZE_FULL 		= '-12';
+	const SIZE_QUARTER3		= '-9';
+	const SIZE_THIRD2 		= '-8';
 	const SIZE_HALF 		= '-6';
 	const SIZE_THIRD 		= '-4';
 	const SIZE_QUARTER 		= '-3';
 
-	/* Génère les champs formulaire à partir d'un tableau d'options */	
+	/* Génère les champs formulaire à partir d'un tableau d'options */
 	public static function generateFields($form, $fields, $object = null) {
 
 		$group = 0;
@@ -36,7 +38,7 @@ class Form
 			$value = null;
 			if($object != null && isset($object[$_key]))
 				$value = $object[$_key];
-			
+
 			$_type 			= isset($field['type']) 		? $field['type'] : self::TYPE_TEXT;
 			$_size 			= isset($field['size']) 		? $field['size'] : self::SIZE_FULL;
 			$_weight 		= isset($field['weight']) 		? $field['weight'] : self::WEIGHT_LIGHT;
@@ -66,7 +68,7 @@ class Form
 			$title_input 	= $_required ? 'Ce champ est obligatoire' : '';
 
 			echo '<div '.$_id.' class="form-group col-lg'.$_size.($_required ? ' has-error' : '').$_classes.'">'.EOL;
-				
+
 				if($_type != self::TYPE_HIDDEN) {
 					if($_link && $value != null) {
 						echo '<a class="internal" href="'.$_link.'">';
@@ -76,31 +78,31 @@ class Form
 						echo '<label for="'.$_key.'" class="'.$class_label.'">'.$_label.'</label>'.EOL;
 					}
 				}
-				
+
 				switch($_type) {
 
 					case self::TYPE_HIDDEN:
 						echo $form->hidden(
-							$_key, 
+							$_key,
 							$value
 						).EOL;
 						break;
 
 					case self::TYPE_TEXT:
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->input($_key, $value, 'text', 
+							echo $form->input($_key, $value, 'text',
 								array_merge(
-									($_disabled ? array('readonly' => '') : array()), 
+									($_disabled ? array('readonly' => '') : array()),
 									(count($_options) > 0 ? array(
 										'data-provide' => 'typeahead',
 										'data-items' => 8,
 										'data-value' => $value,
-										'data-source' => json_encode(array_values($_options)), 
+										'data-source' => json_encode(array_values($_options)),
 										'autocomplete' => 'off',
-									) : array()), 
+									) : array()),
 									array(
-										'class' 		=> 'form-control input'.$_weight, 
-										'placeholder' 	=> $_label, 
+										'class' 		=> 'form-control input'.$_weight,
+										'placeholder' 	=> $_label,
 										'title' 		=> $title_input,
 									)
 								)
@@ -111,12 +113,12 @@ class Form
 
 					case self::TYPE_PASSWORD:
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->input($_key, $value, 'text', 
+							echo $form->input($_key, $value, 'text',
 								array_merge(
-									($_disabled ? array('readonly' => '') : array()), 
+									($_disabled ? array('readonly' => '') : array()),
 									array(
-										'class' 		=> 'form-control input'.$_weight, 
-										'placeholder' 	=> $_label, 
+										'class' 		=> 'form-control input'.$_weight,
+										'placeholder' 	=> $_label,
 										'title' 		=> $title_input,
 									)
 								)
@@ -127,13 +129,13 @@ class Form
 
 					case self::TYPE_TEXTAREA:
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->textarea($_key, $value, 
+							echo $form->textarea($_key, $value,
 								array_merge(
-									($_disabled ? array('readonly' => '') : array()), 
+									($_disabled ? array('readonly' => '') : array()),
 									array(
-										'class' 		=> 'form-control input'.$_weight, 
-										'rows' 			=> '7', 
-										'placeholder' 	=> $_label, 
+										'class' 		=> 'form-control input'.$_weight,
+										'rows' 			=> '7',
+										'placeholder' 	=> $_label,
 										'title' 		=> $title_input,
 									)
 								)
@@ -144,11 +146,11 @@ class Form
 
 					case self::TYPE_CHECKBOX:
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->checkbox($_key, $_checked, (is_null($value) ? 0 : $value),  
+							echo $form->checkbox($_key, $_checked, (is_null($value) ? 0 : $value),
 								array_merge(
-									($_disabled ? array('readonly' => '') : array()), 
+									($_disabled ? array('readonly' => '') : array()),
 									array(
-										'class' 		=> 'input'.$_weight, 
+										'class' 		=> 'input'.$_weight,
 										'title' 		=> $title_input,
 									)
 								)
@@ -159,11 +161,11 @@ class Form
 
 					case self::TYPE_SELECT:
 						echo '<div class="'.$class_wrap.'">'.EOL;
-							echo $form->select($_key, $_options, $value, 
+							echo $form->select($_key, $_options, $value,
 								array_merge(
-									($_disabled ? array('readonly' => '') : array()), 
+									($_disabled ? array('readonly' => '') : array()),
 									array(
-										'class' 		=> 'form-control input'.$_weight, 
+										'class' 		=> 'form-control input'.$_weight,
 										'title' 		=> $title_input,
 									)
 								)
@@ -190,13 +192,13 @@ class Form
 								}
 								echo '<a href="'.ROOT.PAGE.'/supprimer_fichier/'.$_key.'" class="btn btn-danger btn-sm btn-modal" data-modal-content="Êtes-vous sûr de vouloir supprimer le fichier ?"><i class="glyphicon glyphicon-remove"></i> Supprimer le fichier</a>'.EOL;
 								echo $form->hidden(
-									$_key, 
+									$_key,
 									$value
 								).EOL;
 							} else {
-								echo $form->file($_key, 
+								echo $form->file($_key,
 									array_merge(
-										($_disabled ? array('readonly' => '') : array()), 
+										($_disabled ? array('readonly' => '') : array()),
 										array(
 											'title' 		=> $title_input,
 										)
@@ -211,9 +213,9 @@ class Form
 					case self::TYPE_DATE:
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo '<div class="datepicker input-group">'.EOL;
-								echo $form->input($_key, ($value == null ? null : DateFormat::toHTML($value, 'Y-m-d')), 'text', 
+								echo $form->input($_key, ($value == null ? null : DateFormat::toHTML($value, 'Y-m-d')), 'text',
 									array_merge(
-										($_disabled ? array('readonly' => '') : array()), 
+										($_disabled ? array('readonly' => '') : array()),
 										array(
 											'class' 		=> 'form-control input'.$_weight,
 											'placeholder' 	=> $_label,
@@ -231,9 +233,9 @@ class Form
 					case self::TYPE_HOUR:
 						echo '<div class="'.$class_wrap.'">'.EOL;
 							echo '<div class="timepicker input-group">'.EOL;
-								echo $form->input($_key, ($value == null ? null : DateFormat::alter($value, 'H:i:s', 'H:i')), 'text', 
+								echo $form->input($_key, ($value == null ? null : DateFormat::alter($value, 'H:i:s', 'H:i')), 'text',
 									array_merge(
-										($_disabled ? array('readonly' => '') : array()), 
+										($_disabled ? array('readonly' => '') : array()),
 										array(
 											'class' 		=> 'form-control input'.$_weight,
 											'placeholder' 	=> $_label,
