@@ -40,6 +40,13 @@ Atomik::set(array(
 		)
 	),
 
+	'phpexcel' => array(
+		'path' => 'vendor/phpexcel/',
+		'files' => array(
+			'config' => 'PHPExcel.php'
+		)
+	),
+
 	'helpers' => array(
 		'filters' => array(
 			'required_message' => 'Vous devez remplir le champ %s.',
@@ -58,10 +65,10 @@ Atomik::set(array(
 		'routes' => array(
 
 			'404' 											=> array('action' => '404'),
-			
+
 			'connexion' 									=> array('action' => 'utilisateurs/connexion'),
 			'deconnexion' 									=> array('action' => 'utilisateurs/deconnexion'),
-			
+
 			'utilisateurs'											=> array('action' => 'utilisateurs/index'),
 			'utilisateurs/ajouter'									=> array('action' => 'utilisateurs/ajouter'),
 			'utilisateurs/modifier/:id' 							=> array('action' => 'utilisateurs/modifier'),
@@ -69,7 +76,7 @@ Atomik::set(array(
 			'utilisateurs/mot-de-passe/:id' 						=> array('action' => 'utilisateurs/regenerer-mdp'),
 			'utilisateurs/mon-compte' 								=> array('action' => 'utilisateurs/mon-compte'),
 			'utilisateurs/mon-compte/mot-de-passe' 					=> array('action' => 'utilisateurs/modifier-mdp'),
-			
+
 			'clients'										=> array('action' => 'clients/index'),
 			'clients/ajouter'								=> array('action' => 'clients/ajouter'),
 			'clients/modifier/:id' 							=> array('action' => 'clients/modifier'),
@@ -77,14 +84,14 @@ Atomik::set(array(
 			'clients/supprimer/:id' 						=> array('action' => 'clients/supprimer'),
 
 		)
-	),	
-	
+	),
+
 ));
 
 
 if(substr($_SERVER['SERVER_ADDR'], 0, 3) != "127") {
 
-	/* Remote conf */ 
+	/* Remote conf */
 	Atomik::set(array(
 
 		'base_dir' => '',
@@ -100,7 +107,7 @@ if(substr($_SERVER['SERVER_ADDR'], 0, 3) != "127") {
 		'atomik' => array(
 			'debug' => false,
 		),
-		
+
 	));
 
 }
