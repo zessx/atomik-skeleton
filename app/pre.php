@@ -6,10 +6,10 @@ define('ROOT', 	'http://'.$_SERVER['SERVER_NAME'].'/'.Atomik::get('base_dir'));
 define('PAGE', 	isset($_GET['action']) ? $_GET['action'] : '');
 define('EOL', 	"\r\n");
 
-include 'class/DateFormat.php';
-include 'class/Tools.php';
-include 'class/Form.php';
-include 'class/Uploader.php';
+Atomik::needed('DateFormat');
+Atomik::needed('Form');
+Atomik::needed('Tools');
+Atomik::needed('Uploader');
 
 if(!Atomik::has('session.user')) {
 	if(PAGE != 'connexion')
