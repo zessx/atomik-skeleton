@@ -33,9 +33,16 @@ footer {
     padding: 5px 15px;
     cursor: default; }
   .sidenav .nav > li > a {
-    padding: 5px 15px 5px 40px; }
+    padding: 5px 15px 5px 40px;
+    border-right: 5px solid;
+    border-right-color: rgba(0, 0, 0, 0); }
+    .sidenav .nav > li > a h4 {
+      margin-left: -40px;
+      cursor: pointer; }
+    .sidenav .nav > li > a small {
+      float: right; }
     .sidenav .nav > li > a:hover, .sidenav .nav > li > a.active {
-      border-right: 5px solid;
+      border-right-color: #2A6496;
       background: #EEE; }
   .sidenav.affix {
     position: fixed;

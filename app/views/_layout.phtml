@@ -71,6 +71,8 @@
 					<div class="sidenav" role="complementary" data-spy="affix">
 						<ul class="nav bs-sidenav">
 
+							<li><a <?= Atomik::uriMatch('/^\/?$/') ? 'class="active"' : '' ?> href="<?= Atomik::url('@home') ?>"><h4><span class="glyphicon glyphicon-home"></span> Accueil</h4></a></li>
+
 							<li><h4><span class="glyphicon glyphicon-earphone"></span> Gestion des clients</h4></li>
 							<li><a <?= Atomik::uriMatch('/clients*/') ? 'class="active"' : '' ?> href="<?= Atomik::url('@cl_all') ?>">Clients</a></li>
 
