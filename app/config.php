@@ -61,7 +61,7 @@ Atomik::set(array(
 
 	'mails' => array(
 		'dir' => 'app/mails/',
-		'sender' => 'no-reply@gam-22.com',
+		'sender' => 'no-reply@zes.sx',
 	),
 
 	'app' => array(
