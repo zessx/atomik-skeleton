@@ -1,3 +1,3 @@
 <?php
 
-/* Pre-dispatch file, launched after Atomik::Dispatch::After */
+/* Post-dispatch file, launched after Atomik::Dispatch::After */
